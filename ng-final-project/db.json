@@ -1,0 +1,57 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "string",
+      "password": "string",
+      "confirmpassword": "string",
+      "nickName": "string",
+      "phoneNumber": "number"
+    },
+    {
+      "email": "g_bidzishvili@cu.edu.ge",
+      "password": "fgdfgsdfgdsf",
+      "confirmPass": "fgdfgsdfgdsf",
+      "nickname": "fgdfgsdfgdsf",
+      "phoneNumber": "+995555555444",
+      "checkbox": true,
+      "id": 2
+    },
+    {
+      "email": "g_bidzishvili@cu.edu.ge",
+      "password": "fgdfgsdfgdsf",
+      "confirmPass": "fgdfgsdfgdsf",
+      "nickname": "fgdfgsdfgdsf",
+      "phoneNumber": "+995555555444",
+      "checkbox": true,
+      "id": 3
+    },
+    {
+      "email": "g_bidzishvili@cu.edu.ge",
+      "password": "adfasdfaf",
+      "confirmPass": "adfasdfaf",
+      "nickname": "adfasdfaf",
+      "phoneNumber": "+995555444666",
+      "checkbox": true,
+      "id": 4
+    },
+    {
+      "email": "g_bidzishvili@cu.edu.ge",
+      "password": "adfasdfaf",
+      "confirmPass": "adfasdfaf",
+      "nickname": "adfasdfaf",
+      "phoneNumber": "+995555444666",
+      "checkbox": true,
+      "id": 5
+    },
+    {
+      "email": "g_bidzishvili@cu.edu.ge",
+      "password": "adfasdfaf",
+      "confirmPass": "adfasdfaf",
+      "nickname": "adfasdfaf",
+      "phoneNumber": "+995555444666",
+      "checkbox": true,
+      "id": 6
+    }
+  ]
+}

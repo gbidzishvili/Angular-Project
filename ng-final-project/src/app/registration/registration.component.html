@@ -1,0 +1,62 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
+  <div class="div-cont">
+    <label><span class="color-red">*</span> E-mail:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      formControlName="email"
+      [value]="email"
+    />
+  </div>
+
+  <br />
+  <div class="div-cont">
+    <label><span class="color-red">*</span> Password:</label>
+    <input type="text" formControlName="password" [value]="password" />
+  </div>
+  <br />
+  <div class="div-cont">
+    <label><span class="color-red">*</span> Confirm Password:</label>
+    <input type="text" formControlName="confirmPass" [value]="confirmPass" />
+  </div>
+  <br />
+  <div class="div-cont">
+    <label><span class="color-red">*</span> Nickname:</label>
+    <input type="text" formControlName="nickname" [value]="nickname" />
+  </div>
+  <br />
+  <div class="div-cont">
+    <label><span class="color-red">*</span> Phone Number:</label>
+    <input type="text" formControlName="phoneNumber" [value]="phoneNumber" />
+  </div>
+
+  <br />
+
+  <div class="div-cont check">
+    <input
+      type="checkbox"
+      id="check"
+      ngDefaultControl
+      formControlName="checkbox"
+    /><label for="check" class="check"
+      >I have read the <a href="#" class="underline"> agreeement</a></label
+    >
+  </div>
+  <br />
+  <div class="div-cont regbtns col-md-12">
+    <!-- <li *ngFor="let el of arr; let i = index">
+    Person
+    {{ i + 1 }}: email:{{ el.email }}; password: {{ el.password }};
+    confirmPass:{{ el.confirmPass }}; nickname:{{ el.nickname }}; phoneNumber:{{
+      el.phoneNumber
+    }}; website:{{ el.website }};salary:{{ el.salary }}
+
+  </li> -->
+    <button class="btn" type="submit" [disabled]="isAnswered()">Sign Up</button>
+    <span> |</span>
+    <button class="btn" type="submit" (click)="goToLogin()">
+      Go to Login Page
+    </button>
+  </div>
+</form>

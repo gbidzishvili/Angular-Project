@@ -1,0 +1,33 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div class="div-cont">
+    <label><span class="color-red">*</span> E-mail:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      formControlName="email"
+      (input)="auth()"
+      [value]="email"
+    />
+  </div>
+  <br />
+  <div class="div-cont">
+    <label><span class="color-red">*</span> Password:</label>
+    <input
+      type="text"
+      formControlName="password"
+      (input)="auth()"
+      [value]="password"
+    />
+  </div>
+  <br />
+  <br />
+  <div class="div-cont regbtns col-md-12">
+    <!-- <button class="btn" type="submit" [disabled]="isFilled()">LogIn</button> -->
+    <button class="btn register" type="submit">Login</button>
+    <span> |</span>
+    <button class="btn register" type="button" (click)="gotoSignUp()">
+      Go to Sign Up Page
+    </button>
+  </div>
+</form>

@@ -1,21 +1,28 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { LoginComponent } from './login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CoreModule } from './core/core.module';
+
+import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule} from '@angular/material/icon'
+
 
 @NgModule({
-  declarations: [AppComponent, RegistrationComponent, LoginComponent, PageNotFoundComponent],
+  declarations: [AppComponent,
+     ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    BrowserModule,
+    SharedModule,
     HttpClientModule,
+    CoreModule,
+    BrowserAnimationsModule,
+    MatIconModule ,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

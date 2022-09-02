@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { passConfValidator } from './confirm-pass.validator';
-import { AuthServiceService } from './auth-service.service';
-import { user } from '../core/interfaces/interfaces';
+import { passConfValidator } from 'src/app/features/auth/validators/confirm-pass';
+import { AuthServiceService } from 'src/app/features/auth/services/auth-service.service';
+import { user } from 'src/app/features/auth/interfaces/interfaces';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit {
         email: new FormControl(null, [Validators.required, Validators.email]),
         password: new FormControl(null, [
           Validators.required,
-          Validators.pattern('^[A-Za-z0-9]+'),
+          Validators.pattern('^[A-Za-z0-9]+'), 
           Validators.minLength(7),
         ]),
         confirmPass: new FormControl(null, [

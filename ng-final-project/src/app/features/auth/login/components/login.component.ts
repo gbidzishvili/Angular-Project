@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthServiceService } from '../registration/auth-service.service';
+import { AuthServiceService } from '../../services/auth-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       this.signupForm.get('email').value,
       this.signupForm.get('password').value
     );
-    // if (this.signupForm.valid) this.router.navigate(['/users']);
+  
   }
   isFilled(): boolean {
     if (this.signupForm.valid && this.signupForm.touched === true) return false;

@@ -1,0 +1,60 @@
+
+<head>
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+</head>
+<body>   
+    <div class="background">
+        <app-navigation></app-navigation>
+<div class="main-cont">
+   
+        <app-side-bar></app-side-bar>
+        
+             <div class="card-container">
+                   <div class="search-bar">
+                         <form [formGroup]="Form" (ngSubmit)="onSubmit(Form.value)">
+                            <input
+                            class="form-control"
+                            type="text"
+                            formControlName="search"
+                            (click)="clearText()"
+                           >
+                        <button type="submit" class="submit"><mat-icon color="primary" class="col3 material-icons-outlined">search</mat-icon></button>
+                       </form>
+                       <div class="error" *ngIf="!correctCountry">Choose Valid City</div>
+                   </div>
+                   <!-- <div class="inner-cont"> -->
+                       <div class="card">
+                    
+                    <div class="backgroundImage flex-cont" *ngIf="sunny">
+                        <div class="city ">{{city | titlecase}}</div>
+                        <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
+                    </div>
+                    <div class="backgroundImage2 flex-cont" *ngIf="!sunny">
+                        <div class="city">{{city}}</div>
+                        <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
+                    </div>
+                    <span class="info">More Information</span>
+                    <div class="infocont">
+                        <div class="cont">
+                            <div class="align-vertically"><mat-icon color="primary" class="col4">ac_unit</mat-icon><span>Min_temp {{Mintemp}}°</span></div>
+                            <div class="align-vertically height40px"><mat-icon color="primary" class="col3 material-icons-outlined">water_drop</mat-icon><span>Humidity {{humidity}}%</span></div>
+                        </div>
+                        <div class="cont">
+                            <div class="align-vertically "><mat-icon color="primary" class="col2">dew_point</mat-icon><span>Max_temp {{Maxtemp}}°</span></div>
+                        <div class="align-vertically"><mat-icon color="primary" class="col1">air</mat-icon> <span class="wind">Windspeed {{wind}}km/h</span></div>
+                    </div>
+                    </div>
+                </div>
+                <button class="quiz" click>Play Quiz</button>
+                
+                <!-- </div> -->
+            </div>
+            <app-currency-exchanger></app-currency-exchanger>
+   </div>
+</div>
+</body>

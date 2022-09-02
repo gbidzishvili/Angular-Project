@@ -25,33 +25,7 @@
       "phoneNumber": "+995555555444",
       "checkbox": true,
       "id": 3
-    },
-    {
-      "email": "g_bidzishvili@cu.edu.ge",
-      "password": "adfasdfaf",
-      "confirmPass": "adfasdfaf",
-      "nickname": "adfasdfaf",
-      "phoneNumber": "+995555444666",
-      "checkbox": true,
-      "id": 4
-    },
-    {
-      "email": "g_bidzishvili@cu.edu.ge",
-      "password": "adfasdfaf",
-      "confirmPass": "adfasdfaf",
-      "nickname": "adfasdfaf",
-      "phoneNumber": "+995555444666",
-      "checkbox": true,
-      "id": 5
-    },
-    {
-      "email": "g_bidzishvili@cu.edu.ge",
-      "password": "adfasdfaf",
-      "confirmPass": "adfasdfaf",
-      "nickname": "adfasdfaf",
-      "phoneNumber": "+995555444666",
-      "checkbox": true,
-      "id": 6
     }
+    
   ]
 }

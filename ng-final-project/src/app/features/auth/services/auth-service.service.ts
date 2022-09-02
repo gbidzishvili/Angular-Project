@@ -33,11 +33,11 @@ export class AuthServiceService {
           this.password = password;
           this.isAuthenticated = true;
           if (user) {
-            this.router.navigate(['/main']).then();
+            this.router.navigate(['/weather']);
             return true;
           } else {
             alert('invalid email or password');
-            this.router.navigate(['/']).then();
+            this.router.navigate(['/']);
           }
         })
       )
@@ -49,13 +49,4 @@ export class AuthServiceService {
   }
 }
 
-// export interface user {
-//   email: string;
-//   password: string;
-//   confirmPass: string;
-//   nickname: string;
-//   phoneNumber: number;
-//   website: string;
-//   salary: number;
-//   checkbox: boolean;
-// }
+

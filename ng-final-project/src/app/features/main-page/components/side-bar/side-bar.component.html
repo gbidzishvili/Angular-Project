@@ -1,1 +1,60 @@
-<p>side-bar works!</p>
+<div class="background">
+  <div class="title-cont">
+        <div class="city">{{city}}</div>
+        <div class="day-1">{{today}}</div>
+        <div class="time">{{ rxTime | date: 'hh:mm:ss a' }}</div>
+  </div>
+    <div *ngIf="sunny">
+    <div class="cont-1" >
+       <div class="iner-cont">
+            <div class="sunny"></div>
+            <div class="temp">{{currtemp}}</div>
+       </div>
+       <div class="label">sunny</div>
+    </div>
+    </div>
+
+    <div *ngIf="cloudy">
+    <div class="cont-1" >
+       <div class="iner-cont">
+            <div class="cloudy"></div>
+            <div class="temp">{{currtemp}}</div>
+       </div>
+       <div class="label">cloudy</div>
+    </div>
+</div>
+       <div *ngIf="rainy">
+    <div class="cont-1" >
+       <div class="iner-cont">
+            <div class="rainy"></div>
+            <div class="temp">{{currtemp}}</div>
+        </div>
+        <div class="label">rainy</div>
+    </div>
+</div>
+       <div *ngIf="snowy">
+    <div class="cont-1" >
+       <div class="iner-cont">
+            <div class="snowy"></div>
+            <div class="temp">{{currtemp}}</div>
+       </div>
+       <div class="label">snowy</div>
+    </div>       
+    </div>
+    <div class="day-2 day"*ngIf="tumSunny"><span class="width">{{day_2}}</span><div class="flex"> <div class="sunny small" ></div> {{tumTemp}}°</div></div>
+    <div class="day-2 day"*ngIf="tumRainy"><span class="width">{{day_2}}</span><div class="flex"> <div class="rainy small" ></div> {{tumTemp}}°</div></div>
+    <div class="day-2 day"*ngIf="tumSnowy"><span class="width">{{day_2}}</span><div class="flex"> <div class="snowy small" ></div> {{tumTemp}}°</div></div>
+    <div class="day-2 day"*ngIf="tumCloudy"><span class="width">{{day_2}}</span><div class="flex"> <div class="snowy small" ></div> {{tumTemp}}°</div></div>
+    <div class="day-3 day"*ngIf="dayAfttumSnowy"><span class="width">{{day_3}}</span><div class="flex"> <div class="snowy small" ></div> {{dayAfttumtem}}°</div></div>
+    <div class="day-3 day"*ngIf="dayAfttumRainy"><span class="width">{{day_3}}</span><div class="flex"> <div class="rainy small" ></div> {{dayAfttumtem}}°</div></div>
+    <div class="day-3 day"*ngIf="dayAfttumSunny"><span class="width">{{day_3}}</span><div class="flex"> <div class="sunny small" ></div> {{dayAfttumtem}}°</div></div>
+    <div class="day-3 day"*ngIf="dayAfttumCloudy"><span class="width">{{day_3}}</span><div class="flex"> <div class="cloudy small" ></div> {{dayAfttumtem}}°</div></div>
+    <div class="day-4 day"*ngIf="twoDaysAftTumSunny"><span class="width">{{day_4}}</span> <div class="flex"> <div class="sunny small" ></div>{{twoDaysAftTumTemp}}°</div></div>
+    <div class="day-4 day"*ngIf="twoDaysAftTumRainy"><span class="width">{{day_4}}</span> <div class="flex"> <div class="rainy small" ></div>{{twoDaysAftTumTemp}}°</div></div>
+    <div class="day-4 day"*ngIf="twoDaysAftTumSnowy"><span class="width">{{day_4}}</span> <div class="flex"> <div class="snowy small" ></div>{{twoDaysAftTumTemp}}°</div></div>
+    <div class="day-4 day"*ngIf="twoDaysAftTumCloudy"><span class="width">{{day_4}}</span> <div class="flex"> <div class="cloudy small" ></div>{{twoDaysAftTumTemp}}°</div></div>
+    <div class="day-5 day"*ngIf="threeDaysAftTumCloudy"><span class="width">{{day_5}}</span><div class="flex"> <div class="cloudy small" ></div> {{threeDaysAftTumTemp}}°</div></div>
+    <div class="day-5 day"*ngIf="threeDaysAftTumRainy"><span class="width">{{day_5}}</span><div class="flex"> <div class="rainy small" ></div> {{threeDaysAftTumTemp}}°</div></div>
+    <div class="day-5 day"*ngIf="threeDaysAftTumSnowy"><span class="width">{{day_5}}</span><div class="flex"> <div class="snowy small" ></div> {{threeDaysAftTumTemp}}°</div></div>
+    <div class="day-5 day"*ngIf="threeDaysAftTumSunny"><span class="width">{{day_5}}</span><div class="flex"> <div class="sunny small" ></div> {{threeDaysAftTumTemp}}°</div></div>
+</div>

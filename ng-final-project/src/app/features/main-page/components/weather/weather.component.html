@@ -12,7 +12,15 @@
         <app-navigation></app-navigation>
 <div class="main-cont">
    
-        <app-side-bar></app-side-bar>
+        <app-side-bar [currtemp]="inpCurTemp"
+         [tumTemp]="tumTempAvg" 
+         [tumsky]="tumsky"
+         [dayAfttumtem]="dayAfttumtemAvg" 
+         [dayAfttumsky]="dayAfttumsky"
+
+         [twoDaysAftTumTemp]="twoDaysAftTumTempAvg" 
+         [threeDaysAftTumTemp]="threeDaysAftTumTempAvg" 
+         [city]="city" [sky]="sky"></app-side-bar>
         
              <div class="card-container">
                    <div class="search-bar">

@@ -26,6 +26,5 @@ import { CurrencyExchangerComponent } from './components/currency-exchanger/curr
     SharedModule,
     RouterModule.forChild([{ path: '', component: WeatherComponent }])
   ],
-  // exports:[TopBarComponent]
 })
 export class WeatherModule { }

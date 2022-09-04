@@ -1,0 +1,21 @@
+<div class="background">
+    <app-quiz-top-bar></app-quiz-top-bar>
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+<div class="" *ngIf="!finished">
+    <button (click)="getData()" class="start" *ngIf="!started">start</button>
+    <button (click)="nextquestion()" class="start" *ngIf="next">next</button>
+    
+    <div *ngIf="counter" (click)="increaseCounter()">{{counter}}</div>
+    <div class="question">{{question}}</div>
+    <div class="answers-cont">
+        <div class="answer-1">{{answer_1}}</div>
+        <div class="answer-2">{{answer_2}}</div>
+        <div class="answer-3">{{answer_3}}</div>
+        <div class="answer-4">{{answer_4}}</div>
+    </div>
+</div>
+<div *ngIf="finished">
+    <div>finished</div>
+    <button (click)="restartquiz()" class="start" *ngIf="restart">restart</button>
+</div>
+</div>

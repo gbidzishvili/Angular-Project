@@ -10,7 +10,6 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule} from '@angular/material/icon'
 
-
 @NgModule({
   declarations: [AppComponent,
      ],
@@ -22,7 +21,7 @@ import { MatIconModule} from '@angular/material/icon'
     CoreModule,
     BrowserAnimationsModule,
     MatIconModule ,
-    
+   
   ],
   providers: [],
   bootstrap: [AppComponent],

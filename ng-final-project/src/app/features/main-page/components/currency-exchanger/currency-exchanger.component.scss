@@ -1,0 +1,39 @@
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+}
+input{
+    width: 110px;
+    border-radius: 7px;
+    border:none;
+    background-color: #fff;
+    padding: 5px 10px;
+}
+.flex-direction-col{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    height: 100px;
+}
+label{
+    font-family: "roboto";
+    color: #fff;
+}
+.error{
+    color: red;
+    height: 10px;
+}
+.flex{
+    display: flex;
+    gap: 5px;
+}
+.flex-direction-col2{
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    flex-direction: column;
+}

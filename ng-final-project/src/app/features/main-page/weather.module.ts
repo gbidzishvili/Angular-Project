@@ -9,6 +9,7 @@ import { InfoComponent } from './components/info/info.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CurrencyExchangerComponent } from './components/currency-exchanger/currency-exchanger.component';
+import { ConvertorComponent } from './components/convertor/convertor.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CurrencyExchangerComponent } from './components/currency-exchanger/curr
     NavigationComponent,
     SideBarComponent,
     CurrencyExchangerComponent,
+    ConvertorComponent,
     
   ],
   imports: [

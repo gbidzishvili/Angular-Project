@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+.convertor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #98ceff;
+    border: none;
+    border-radius: 9px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+    font-family: "roboto";
+    font-size: 14px;
+    width: 225px;
+}
+.inner-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+input{
+    width: 80px;
+    border: none;
+    background-color: #0000003b;
+    border-radius: 5px;
+    padding: 4px 8px;
+}
+input:focus{
+    outline: none;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+}
+.small-cont{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    
+}
+mat-icon{
+    height: 23px;
+}
+label{
+    font-weight: bold;
+}

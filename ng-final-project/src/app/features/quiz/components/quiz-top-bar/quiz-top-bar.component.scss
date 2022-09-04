@@ -1,0 +1,28 @@
+.top-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color:#ffc200;
+    height: 50px;
+}
+
+.inner-cont{
+    display: flex;
+    width: 160px;
+    justify-content: center;
+    gap: 15px;
+}
+button{
+    border: none;
+    background-color: rgba(0, 0, 0, 0.1803921569);
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.logo{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "roboto";
+    color: #fff;
+}

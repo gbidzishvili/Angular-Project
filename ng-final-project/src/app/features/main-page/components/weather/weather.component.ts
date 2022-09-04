@@ -73,29 +73,29 @@ export class WeatherComponent implements OnInit {
     this.Form = new FormGroup({
     search : new FormControl("search city")})
    this.counter = this.counter+1;
-    this.item = localStorage.getItem(`${2}`);
-    this.itemParsed = JSON.parse(this.item)
-    // console.log(this.itemParsed);
-    this.temp =Math.round(this.itemParsed.main.temp.toString()); 
-    this.Mintemp = Math.round(this.itemParsed.main.temp_min.toString());
-    this.Maxtemp = Math.round(this.itemParsed.main.temp_max.toString());
-    this.wind = this.itemParsed.wind.speed;
-    this.humidity = Math.round(this.itemParsed.main.humidity.toString());
-    this.inpCurTemp = this.temp + "°";
-    this.sky = this.itemParsed.weather[0].main;
+    // this.item = localStorage.getItem(`${2}`);
+    // this.itemParsed = JSON.parse(this.item)
+    // // console.log(this.itemParsed);
+    // this.temp =Math.round(this.itemParsed.main.temp.toString()); 
+    // this.Mintemp = Math.round(this.itemParsed.main.temp_min.toString());
+    // this.Maxtemp = Math.round(this.itemParsed.main.temp_max.toString());
+    // this.wind = this.itemParsed.wind.speed;
+    // this.humidity = Math.round(this.itemParsed.main.humidity.toString());
+    // this.inpCurTemp = this.temp + "°";
+    // this.sky = this.itemParsed.weather[0].main;
     // /////////
     this.item2 = localStorage.getItem(`${3}`);
     this.itemParsedForecast = JSON.parse(this.item2);
-    console.log(this.itemParsedForecast["list"]);
+    // console.log(this.itemParsedForecast["list"]);
     this.todaysDate = this.itemParsedForecast["list"][0].dt_txt.slice(8,10);
-    console.log( this.itemParsedForecast["list"][0].dt_txt.slice(8,10));
+    // console.log( this.itemParsedForecast["list"][0].dt_txt.slice(8,10));
     // this.firstDay = new Date(this.itemParsedForecast["list"][0].dt_txt.slice(8,10));
     // Get weather data for tomorrow,dayAftertomorow,twoDaysAftTum,threeDaysAftTum.
     for(let i =0; i<8; i++){
       if(this.itemParsedForecast["list"][i].dt_txt.slice(8,10) !== this.todaysDate){
-        console.log(this.itemParsedForecast["list"][i].dt_txt.slice(8,10),this.todaysDate,i);
+        // console.log(this.itemParsedForecast["list"][i].dt_txt.slice(8,10),this.todaysDate,i);
         this.index = i;
-        console.log("index" + this.index);
+        // console.log("index" + this.index);
         break;
       }
     }
@@ -145,8 +145,8 @@ export class WeatherComponent implements OnInit {
      
     this.skyDetec(this.tumsky,this.tumSnowy,this.tumRainy,this.tumSunny,this.tumCloudy);
     this.skyDetec(this.dayAfttumsky,this.dayAfttumSnowy,this.dayAfttumRainy,this.dayAfttumSunny,this.dayAfttumCloudy);
-    console.log(this.dayAfttumSnowy,this.dayAfttumRainy,this.dayAfttumSunny,this.dayAfttumCloudy);
-    console.log(this.tumsky,this.dayAfttumsky);
+    // console.log(this.dayAfttumSnowy,this.dayAfttumRainy,this.dayAfttumSunny,this.dayAfttumCloudy);
+    // console.log(this.tumsky,this.dayAfttumsky);
 
 
     this.tumTempAvg = Math.round(this.tumTempSum/8);

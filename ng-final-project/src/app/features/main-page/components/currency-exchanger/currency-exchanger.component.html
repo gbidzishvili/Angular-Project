@@ -1,1 +1,38 @@
-<p>currency-exchanger works!</p>
+<form [formGroup]="currencyForm" #postForm="ngForm">
+  
+     <div class="flex">
+        <div class="flex-direction-col2"><div><label>cur1:</label><input type="text" formControlName="cur1" /></div>
+          <div class="error"  *ngIf="ivalidCurrency1">Use Valid Currency</div>
+          
+        </div>
+
+        <mat-icon (click)="reverseCurr()">  change_circle </mat-icon>
+        
+         <div class="flex-direction-col2"> <div><label>cur2:</label><input type="text" formControlName="cur2" /></div>
+          <div  class="error"  *ngIf="ivalidCurrency2">Use Valid Currency</div>
+         </div>
+         
+     </div>
+     <div class="flex">
+        <div class="flex-direction-col2">
+          <div>
+            <label>am1:</label><input
+            type="text"
+            formControlName="am1"
+            />
+          </div>
+          <div  class="error" *ngIf="ivalidNumber1">Use Positive Numbers</div>
+        </div>
+        <mat-icon (click)="reverseAmount()"> change_circle </mat-icon>
+        <div class="flex-direction-col2">
+         <div>
+            <label>am2:</label><input
+            type="text"
+            formControlName="am2"
+            />
+         </div>
+          <div class="error"  *ngIf="ivalidNumber2">Use Positive Numbers</div>
+        </div>
+    </div>
+     
+  </form>

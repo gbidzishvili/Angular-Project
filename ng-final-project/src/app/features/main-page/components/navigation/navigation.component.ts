@@ -12,9 +12,7 @@ nickname;
   constructor(private router:Router,private getUsersDataService:GetUsersDataService) { }
 
   ngOnInit(): void {
-    console.log(this.getUsersDataService.nickname);
-    
-    this.nickname = this.getUsersDataService.nickname;
+    this.nickname = localStorage.getItem("nickname")
   }
   logOut(){
 this.router.navigate(['/'])

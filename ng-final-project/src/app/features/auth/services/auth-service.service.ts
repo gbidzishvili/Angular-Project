@@ -39,9 +39,9 @@ export class AuthServiceService {
           
           if (user) {
             // console.log(user["nickname"]);
-            localStorage.setItem(`${this.counter}`,user["nickname"])
-            this.getUsersDataService.getkey(`${this.counter}`);
-            this.counter=this.counter+1;
+            localStorage.setItem(`nickname`,user["nickname"])
+            // this.getUsersDataService.getkey(`${this.counter}`);
+            // this.counter=this.counter+1;
             // this.getUsersDataService.getNickname(`${this.counter}`);
           
             this.router.navigate(['/weather']);

@@ -9,15 +9,15 @@ export class GetUsersDataService implements OnInit {
   item;
 
   constructor() { }
-  getkey(key){
-    this.key = key;
-    this.nickname = localStorage.getItem(this.key);
-    return key;
-  }
+  // getkey(key){
+  //   this.key = key;
+  //   this.nickname = localStorage.getItem(this.key);
+  //   return key;
+  // }
   ngOnInit(): void {
     // console.log(this.key);
     
-    this.nickname = localStorage.getItem(this.key);
+    this.nickname = localStorage.getItem("nickname");
     //  this.item = localStorage.getItem(this.key);
    
   }

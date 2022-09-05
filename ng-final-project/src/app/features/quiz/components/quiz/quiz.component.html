@@ -1,21 +1,39 @@
 <div class="background">
-    <app-quiz-top-bar></app-quiz-top-bar>
+    <app-quiz-top-bar></app-quiz-top-bar>  
     <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
-<div class="" *ngIf="!finished">
-    <button (click)="getData()" class="start" *ngIf="!started">start</button>
-    <button (click)="nextquestion()" class="start" *ngIf="next">next</button>
-    
-    <div *ngIf="counter" (click)="increaseCounter()">{{counter}}</div>
-    <div class="question">{{question}}</div>
-    <div class="answers-cont">
-        <div class="answer-1">{{answer_1}}</div>
-        <div class="answer-2">{{answer_2}}</div>
-        <div class="answer-3">{{answer_3}}</div>
-        <div class="answer-4">{{answer_4}}</div>
+    <div *ngIf="!finished" class="last-page">
+        <div>Completed!</div>
+        <div class="completed">ff</div>
+        <div>
+            {{nickname}}your score {{correctans}}/10
+        </div>
+        <button (click)="restartquiz()" class="restart" >restart</button>
     </div>
+<div class="container" *ngIf="finished">
+    <button (click)="start()" class="start"*ngIf="!started" >Start Quiz <mat-icon  class="arr-icon">navigate_next</mat-icon></button>
+ 
+    <div class="inner-cont">
+        <div class="board" *ngIf="counter">
+           <div class="quest-cont">
+                <div  (click)="increaseCounter()">{{counter}}</div>
+                <div class="question">{{question}}</div>
+                <hr>
+           </div>
+            <div class="answers-cont">
+                
+                <div [ngClass]="estimateAnswer(answer_1,ans1clicked,ans1checked,ans1cleared)" class="answer-1 answer" (click)="checkAnswer(answer_1,1)" >{{answer_1}} <div><mat-icon class="check" *ngIf="ans1checked">check</mat-icon><mat-icon class="clear" *ngIf="ans1cleared">clear</mat-icon></div> </div>
+                <div [ngClass]="estimateAnswer(answer_2,ans2clicked,ans2checked,ans2cleared)" class="answer-2 answer" (click)="checkAnswer(answer_2,2)">{{answer_2}} <div><mat-icon class="check" *ngIf="ans2checked">check</mat-icon><mat-icon class="clear" *ngIf="ans2cleared">clear</mat-icon></div></div>
+                <div [ngClass]="estimateAnswer(answer_3,ans3clicked,ans3checked,ans3cleared)" class="answer-3 answer" (click)="checkAnswer(answer_3,3)">{{answer_3}} <div><mat-icon class="check" *ngIf="ans3checked">check</mat-icon><mat-icon class="clear" *ngIf="ans3cleared">clear</mat-icon></div></div>
+                <div [ngClass]="estimateAnswer(answer_4,ans4clicked,ans4checked,ans4cleared)" class="answer-4 answer" (click)="checkAnswer(answer_4,4)">{{answer_4}} <div><mat-icon class="check" *ngIf="ans4checked">check</mat-icon><mat-icon class="clear" *ngIf="ans4cleared">clear</mat-icon></div></div>
+                
+            
+        </div>
+        <div class="result">result:</div>
+        <div class="correctans">correct {{correctans}}</div>
+        <div class="incorrectans">incorrect {{incorrectans}}</div>
+    </div>
+    <button (click)="nextquestion()" class="next" *ngIf="next">next<mat-icon  class="arr-icon">navigate_next</mat-icon></button>
 </div>
-<div *ngIf="finished">
-    <div>finished</div>
-    <button (click)="restartquiz()" class="start" *ngIf="restart">restart</button>
-</div>
+
+   
 </div>

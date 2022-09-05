@@ -12,7 +12,7 @@ export class QuizTopBarComponent implements OnInit {
 
   ngOnInit(): void {
     // this.nickname = this.getUsersDataService.nickname;
-    this.nickname = "gbidzishvili"
+    this.nickname = localStorage.getItem("nickname")
     console.log(this.nickname);
     
   }

@@ -4,15 +4,16 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { user } from '../interfaces/interfaces';
 import { GetUsersDataService } from 'src/app/shared/services/get-users-data.service';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthServiceService {
-  counter=0;
-  isAuthenticated = false;
-  email: string;
-  password: string;
-  salary: number;
+  public counter:number=0;
+  public isAuthenticated:boolean = false;
+  public email: string;
+  public password: string;
+  public salary: number;
   constructor(private http: HttpClient, private router: Router,private getUsersDataService:GetUsersDataService) {}
   getEmail(email: string) {
     if (typeof email !== 'string') return false;
@@ -49,6 +50,7 @@ export class AuthServiceService {
           } else {
             alert('invalid email or password');
             this.router.navigate(['/']);
+            return false;
           }
         })
       )
@@ -58,6 +60,7 @@ export class AuthServiceService {
     if (this.isAuthenticated === true) return true;
     else return false;
   }
+
 }
 
 

@@ -18,33 +18,33 @@ export class SideBarComponent implements OnInit,OnInit {
   @Input()dayAfttumsky:string;
   @Input()twoDaysAftTumsky:string;
   @Input()threeDaysAftTumsky:string;
-  rxTime = new Date();
-  tumSunny=false;
-  tumRainy=false;
-  tumCloudy=false;
-  tumSnowy=false;
-  dayAfttumSunny=false;
-  dayAfttumRainy=false;
-  dayAfttumCloudy=false;
-  dayAfttumSnowy=false;
-  twoDaysAftTumSunny=false;
-  twoDaysAftTumRainy=false;
-  twoDaysAftTumCloudy=false;
-  twoDaysAftTumSnowy=false;
-  threeDaysAftTumSunny=false;
-  threeDaysAftTumRainy=false;
-  threeDaysAftTumCloudy=false;
-  threeDaysAftTumSnowy=false;
-  day_2;
-  day_3;
-  day_4;
-  day_5;
-  sunny=false;
-  cloudy=false;
-  rainy=false;
-  snowy=false;
-  subscription: Subscription;
-  today;
+  public rxTime:Date    = new Date();
+  public tumSunny:boolean=false;
+  public tumRainy:boolean=false;
+  public tumCloudy:boolean=false;
+  public tumSnowy:boolean=false;
+  public dayAfttumSunny:boolean=false;
+  public dayAfttumRainy:boolean=false;
+  public dayAfttumCloudy:boolean=false;
+  public dayAfttumSnowy:boolean=false;
+  public twoDaysAftTumSunny:boolean=false;
+  public twoDaysAftTumRainy:boolean=false;
+  public twoDaysAftTumCloudy:boolean=false;
+  public twoDaysAftTumSnowy:boolean=false;
+  public threeDaysAftTumSunny:boolean=false;
+  public threeDaysAftTumRainy:boolean=false;
+  public threeDaysAftTumCloudy:boolean=false;
+  public threeDaysAftTumSnowy:boolean=false;
+  public day_2:string;
+  public day_3:string;
+  public day_4:string;
+  public day_5:string;
+  public sunny:boolean=false;
+  public cloudy:boolean=false;
+  public rainy:boolean=false;
+  public snowy:boolean=false;
+  public subscription: Subscription;
+  public today:string;
   constructor() { }
 
   ngOnInit(): void {
@@ -53,16 +53,15 @@ export class SideBarComponent implements OnInit,OnInit {
     if(this.sky==='Clouds')this.cloudy=true;
     if(this.sky==='Rain')this.rainy=true;
     if(this.sky==='Snow')this.snowy=true;
-    const currentDate = new Date();
     const tomorrow = new Date(Date.now() + (3600 * 1000 * 24));
     const dayafttom = new Date(Date.now() + (3600 * 1000 * 24)*2);
     const twodaysafttom = new Date(Date.now() + (3600 * 1000 * 24)*3);
     const threedaysafttom = new Date(Date.now() + (3600 * 1000 * 24)*4);
     // console.log(this.today = currentDate.toLocaleDateString('en-us', { weekday: 'long', month: 'short', day: 'numeric' }));
-this.day_2 =  tomorrow.toLocaleDateString('en-us', { weekday: 'long' });
-this.day_3 =  dayafttom.toLocaleDateString('en-us', { weekday: 'long' });
-this.day_4 =  twodaysafttom.toLocaleDateString('en-us', { weekday: 'long' });
-this.day_5=  threedaysafttom.toLocaleDateString('en-us', { weekday: 'long' });
+    this.day_2 =  tomorrow.toLocaleDateString('en-us', { weekday: 'long' });
+    this.day_3 =  dayafttom.toLocaleDateString('en-us', { weekday: 'long' });
+    this.day_4 =  twodaysafttom.toLocaleDateString('en-us', { weekday: 'long' });
+    this.day_5=  threedaysafttom.toLocaleDateString('en-us', { weekday: 'long' });
     // RxJS clock
  this.subscription = timer(0, 1000)
  .pipe(

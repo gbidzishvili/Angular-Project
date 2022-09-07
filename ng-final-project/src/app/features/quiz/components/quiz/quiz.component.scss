@@ -127,7 +127,7 @@
     background-color: blue;
 }
 .last-page{
-   
+    gap: 20px;
     background-color:  #ffc200;
     height: 100%;
     display: flex;
@@ -152,8 +152,88 @@
 .clear{
     color: #fff;
 }
-.completed{
+.background-image1{
     background-image: url("../../images/complete.png");
-    width: 50px;
-    height: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 193px;
+    background-repeat: no-repeat;
+    height: 200px;
+    background-size: 100%;
+    color: #ffffff;
+}
+
+.background-image2{
+    background-image: url("../../images/image1.png");
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 193px;
+    background-repeat: no-repeat;
+    height: 200px;
+    background-size: 100%;
+    color: #ffffff;
+}
+.background-image3{
+    background-image: url("../../images/bestresult.png");
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 193px;
+    background-repeat: no-repeat;
+    height: 200px;
+    background-size: 100%;
+    color: #ffffff;
+}
+.finished-container{
+    display: flex
+}
+.completed{
+    font-weight: 500;
+    font-size: 48px;
+}
+.nickname{
+    font-size: 32px;
+    font-weight: 500;
+}
+.fin-inner-cont{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+.score{
+    font-size: 32px;
+    font-weight: 500;
+}
+.flex-gap{
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+.restart{
+    display: flex;
+    border: none;
+    /* width: 120px; */
+    /* height: 54px; */
+    justify-content: center;
+    align-items: cernter;
+    align-items: center;
+    background:#495057;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+.restart:hover{
+    background-color: 
+    #868e96;
+   
+    box-shadow: 0px 1px 3px #0000008c;
+    // font-size: 34px;
+    // width: 130px;
 }

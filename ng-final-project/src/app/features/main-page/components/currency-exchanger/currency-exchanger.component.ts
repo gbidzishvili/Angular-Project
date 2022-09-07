@@ -9,19 +9,18 @@ import { delay, share } from 'rxjs';
   styleUrls: ['./currency-exchanger.component.scss']
 })
 export class CurrencyExchangerComponent implements OnInit {
-  currencyForm: FormGroup;
-  Am1 = 1;
-  Am2 = 0;
-  // length=false;
-  ivalidCurrency1=false;
-  ivalidCurrency2=false;
-  ivalidNumber1=false;
-  ivalidNumber2=false;
-  cur1 = 'EUR';
-  cur2 = 'USD';
-  rate: number;
-  additinalAmount;
-  additinalCur;
+  public currencyForm: FormGroup;
+  public Am1:number = 1;
+  public Am2:number = 0;
+  public ivalidCurrency1:boolean=false;
+  public ivalidCurrency2:boolean=false;
+  public ivalidNumber1:boolean=false;
+  public ivalidNumber2:boolean=false;
+  public cur1:string = 'EUR';
+  public cur2:string = 'USD';
+  public rate: number;
+  public additinalAmount:number;
+  public additinalCur:string;
   constructor(private http: HttpClient) {}
   round(number){
 

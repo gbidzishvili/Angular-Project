@@ -11,47 +11,40 @@ import { user } from 'src/app/features/auth/interfaces/interfaces';
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
-  signupForm: FormGroup;
-  public value: boolean = false;
-  check = false;
-  display = false;
-  info = '';
-  arr = [];
-  arr2 = [];
-  email = '';
-  password = '';
-  confirmPass = '';
-  phoneNumber = '';
-  nickname = '';
-
+  public signupForm: FormGroup;
+  public arr:user[] = [];
+  public nicknameErr:boolean=false;
+  public emailErr:boolean=false;
+  public passwordErr:boolean=false;
+  public confirmPassErr:boolean=false;
+  public phoneNumberErr:boolean=false;
+  public checkboxErr:boolean=false;
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authServ: AuthServiceService
   ) {}
   ngOnInit() {
     this.signupForm = new FormGroup(
       {
+        nickname: new FormControl(null, [
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9-!$%@#?^&*()_+|~=\\]`{}[:";\\\'<>?,./\\\\]*$'),
+        ]),
         email: new FormControl(null, [Validators.required, Validators.email]),
         password: new FormControl(null, [
           Validators.required,
-          Validators.pattern('^[A-Za-z0-9]+'), 
+          Validators.pattern('^[a-zA-Z0-9-!$%@#?^&*()_+|~=\\]`{}[:";\\\'<>?,./\\\\]*$'), 
           Validators.minLength(7),
         ]),
         confirmPass: new FormControl(null, [
           Validators.required,
-          Validators.pattern('^[A-Za-z0-9]+'),
+          Validators.pattern('^[a-zA-Z0-9-!$%@#?^&*()_+|~=\\]`{}[:";\\\'<>?,./\\\\]*$'),
           Validators.minLength(7),
         ]),
-        nickname: new FormControl(null, [
-          Validators.required,
-          Validators.pattern('^[a-zA-Z0-9-]*$'),
-        ]),
+       
         phoneNumber: new FormControl(null, [
           Validators.required,
-          Validators.pattern('(\\+995\\d{9})?'),
-          Validators.minLength(13),
-          Validators.maxLength(13),
+          Validators.pattern('\\+995\\s?\\d{3}\\s?\\d{2}\\s?\\d{1}\\s?\\d{2}\\s?\\d{1}\\s?'),
         ]),
         checkbox: new FormControl(null, [Validators.required]),
       },
@@ -65,80 +58,47 @@ export class RegistrationComponent implements OnInit {
     });
   }
   onSubmit(postData: user) {
+    console.log('postData');
+    
+    console.log(postData);
+    
+     if(!!postData.nickname!==true){
+      this.nicknameErr=true;
+    }
+     if(!!postData.email!==true){
+      this.emailErr =true;
+    }
+// checkbox
+     if(!!postData.password!==true){
+      this.passwordErr=true;
+    }
+     if(!!postData.confirmPass!==true){
+      this.confirmPassErr =true;
+    }
+     if(!!postData.phoneNumber!==true){
+      this.phoneNumberErr =true;
+    }
+     if(!!postData.checkbox!==true){
+      this.checkboxErr =true;
+    }else{
     this.http
       .post('http://localhost:3000/users', postData)
       .subscribe((response) => {
         console.log(response);
       });
-    this.arr.push({
-      email: this.signupForm.value.email,
-      password: this.signupForm.value.password,
-      confirmPass: this.signupForm.value.name,
-      nickname: this.signupForm.value.name,
-      phoneNumber: this.signupForm.value.phoneNumber,
-      checkbox: true,
-    });
-    // this.router.navigate(['/users']);
+   console.log(this.signupForm);
+   
     return true;
   }
-  isAnswered(): boolean {
-    if (this.signupForm.valid && this.signupForm.touched === true) return false;
-    else return true;
-  }
-  fillFields(i: number) {
-    if (i < 0) {
-      return false;
-    }
-    if (
-      (this.arr[i].email === this.authServ.email,
-      this.arr[i].password === this.authServ.password)
-    ) {
-      console.log(
-        this.arr[i].nickname,
-        '//' + this.signupForm.get('nickname').value
-      );
-      (this.arr[i].email = this.signupForm.get('email').value),
-        (this.arr[i].password = this.signupForm.get('password').value),
-        (this.arr[i].confirmPass = this.signupForm.get('confirmPass').value);
-      this.arr[i].nickname = this.signupForm.get('nickname').value;
-      this.arr[i].phoneNumber = this.signupForm.get('phoneNumber').value;
-    }
-    return true;
-  }
-  removeuser(i: number) {
-    if (i < 0) {
-      return false;
-    }
-    if (
-      (this.arr[i].email === this.authServ.email,
-      this.arr[i].password === this.authServ.password)
-    ) {
-      let txt;
-
-      confirm(
-        `This action will remove a user with this email: ${this.arr[i].email}`
-      );
-      {
-        this.display = false;
-        console.log(i);
-        console.log(this.arr2);
-        for (let j = 0; j < this.arr.length; j++) {
-          this.arr2 = this.arr;
-        }
-        console.log(this.arr2);
-        this.arr = [];
-        for (let j = 0; j < this.arr2.length; j++) {
-          if (j !== i) {
-            this.arr.push(this.arr2[j]);
-            console.log(this.arr2[j]);
-          }
-        }
-        this.arr2 = [];
-        console.log(this.arr2);
-      }
-    }
   }
   goToLogin() {
     this.router.navigate(['/']);
+  }
+  checkIfValid(signupForm){
+    console.log('///');
+    
+    console.log(signupForm);
+    return "redborder";
+    if(this.signupForm.value.value1){}
   }
 }

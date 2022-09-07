@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Component({
@@ -9,57 +11,56 @@ import { catchError } from 'rxjs/operators';
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnInit {
-  arr=[];
   Form:FormGroup;
-  getweather = "weather";
-  getforecast = "forecast";
+  getweather:string = "weather";
+  getforecast:string = "forecast";
   sunny=true;
   counter:number=0;
-  item;
-  item2;
-  itemParsed;
-  itemParsedForecast;
+  item:string;
+  item2:string;
+  itemParsed:string;
+  itemParsedForecast:string;
   temp:number;
   Mintemp:number;
   Maxtemp:number;
   humidity:number;
   wind:number;
-  country = "Georgia";
+  country:string = "Georgia";
   population:number;
-  city="Tbilisi";
-  correctCountry=true;
+  city:string="Tbilisi";
+  correctCountry:boolean=true;
   inpCurTemp:string;
   sky:string;
-  todaysDate;
-  firstDay;
-  tumTempAvg;
-  tumTempSum=0;
-  dayAfttumtemAvg;
-  dayAfttumtemSum=0;
-  twoDaysAftTumTempAvg;
-  twoDaysAftTumTempSum=0;
-  threeDaysAftTumTempAvg;
-  threeDaysAftTumTempSum=0;
-  tumsky;
-  tumSunny=0;
-  tumRainy=0;
-  tumSnowy=0;
-  tumCloudy=0;
-  dayAfttumsky=0;
-  dayAfttumSunny=0;
-  dayAfttumRainy=0;
-  dayAfttumSnowy=0;
-  dayAfttumCloudy=0;
-  twoDaysAftTumsky=0;
-  twoDaysAfttumSunny=0;
-  twoDaysAfttumRainy=0;
-  twoDaysAfttumSnowy=0;
-  twoDaysAfttumCloudy=0;
-  threeDaysAftTumsky=0;
-  threeDaysAfttumSunny=0;
-  threeDaysAfttumRainy=0;
-  threeDaysAfttumSnowy=0;
-  threeDaysAfttumCloudy=0;
+  todaysDate:Date;
+  firstDay:string;
+  tumTempAvg:number;
+  tumTempSum:number=0;
+  dayAfttumtemAvg:number;
+  dayAfttumtemSum:number=0;
+  twoDaysAftTumTempAvg:number;
+  twoDaysAftTumTempSum:number=0;
+  threeDaysAftTumTempAvg:number;
+  threeDaysAftTumTempSum:number=0;
+  tumsky:string;
+  tumSunny:number=0;
+  tumRainy:number=0;
+  tumSnowy:number=0;
+  tumCloudy:number=0;
+  dayAfttumsky:number=0;
+  dayAfttumSunny:number=0;
+  dayAfttumRainy:number=0;
+  dayAfttumSnowy:number=0;
+  dayAfttumCloudy:number=0;
+  twoDaysAftTumsky:number=0;
+  twoDaysAfttumSunny:number=0;
+  twoDaysAfttumRainy:number=0;
+  twoDaysAfttumSnowy:number=0;
+  twoDaysAfttumCloudy:number=0;
+  threeDaysAftTumsky:number=0;
+  threeDaysAfttumSunny:number=0;
+  threeDaysAfttumRainy:number=0;
+  threeDaysAfttumSnowy:number=0;
+  threeDaysAfttumCloudy:number=0;
   index:number;
   baseUrl = "https://openweather43.p.rapidapi.com";
   XRapidAPIKeyheaderName:'X-RapidAPI-Key';
@@ -69,7 +70,41 @@ export class WeatherComponent implements OnInit {
   constructor(public http:HttpClient) { }
   
   ngOnInit(): void {
+    this.http.get(`${this.baseUrl}/${this.getweather}`,
+    { headers: new HttpHeaders({
+      'X-RapidAPI-Key': '19390cb9d4msh526432bedef9373p147597jsn06606fea107d',
+      'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
+    }
+      ),
+      params:new HttpParams()
+      .set("appid","da0f9c8d90bde7e619c3ec47766a42f4")
+      .set('q',"tbilisi")
+      .set("appid","da0f9c8d90bde7e619c3ec47766a42f4")
+      // .set("cnt","40")
+      .set("units","metric")
+    }
+    )
+    .subscribe(v=>{
+      this.temp =Math.round(v['main'].temp.toString());
+      if(this.temp<20)this.sunny = false; 
+      else{this.sunny = true}
+      this.Mintemp = Math.round(v['main'].temp_min.toString());
+    this.Maxtemp = Math.round(v['main'].temp_max.toString());
+    this.wind = v['wind'].speed;
+    this.humidity = Math.round(v['main'].humidity.toString());
+      this.correctCountry = true;
+      this.city = "tbilisi";
+      console.log(v);
+      this.counter++;
+      localStorage.setItem(`${this.counter}`, JSON.stringify(v));
+      this.counter++;
     
+    },
+    (err=>{
+      this.correctCountry = false;
+    }
+    )
+    ),
     this.Form = new FormGroup({
     search : new FormControl("search city")})
    this.counter = this.counter+1;
@@ -89,7 +124,7 @@ export class WeatherComponent implements OnInit {
     // console.log(this.itemParsedForecast["list"]);
     this.todaysDate = this.itemParsedForecast["list"][0].dt_txt.slice(8,10);
     // console.log( this.itemParsedForecast["list"][0].dt_txt.slice(8,10));
-    // this.firstDay = new Date(this.itemParsedForecast["list"][0].dt_txt.slice(8,10));
+    // this.firstDay:string = new Date(this.itemParsedForecast["list"][0].dt_txt.slice(8,10));
     // Get weather data for tomorrow,dayAftertomorow,twoDaysAftTum,threeDaysAftTum.
     for(let i =0; i<8; i++){
       if(this.itemParsedForecast["list"][i].dt_txt.slice(8,10) !== this.todaysDate){
@@ -260,5 +295,7 @@ export class WeatherComponent implements OnInit {
   
   console.log(this.city);
   }
-
+  canDeactivate():Observable<boolean > | Promise<boolean > | boolean  {
+    return confirm("Do you want to leave this page");
+  }
 }

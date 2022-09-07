@@ -1,7 +1,8 @@
 export interface user {
   email: string;
   password: string;
-  confirmpassword: string;
-  nickName: string;
+  confirmPass: string;
+  nickname: string;
   phoneNumber: number;
+  checkbox?:boolean;
 }

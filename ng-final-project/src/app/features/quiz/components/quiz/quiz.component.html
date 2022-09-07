@@ -1,16 +1,28 @@
 <div class="background">
     <app-quiz-top-bar></app-quiz-top-bar>  
     <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
-    <div *ngIf="!finished" class="last-page">
-        <div>Completed!</div>
-        <div class="completed">ff</div>
-        <div>
-            {{nickname}}your score {{correctans}}/10
-        </div>
-        <button (click)="restartquiz()" class="restart" >restart</button>
+    <div *ngIf="finished" class="last-page">
+
+       <div class="main-container">
+            <div class="completed">Completed!</div>
+           <div class="finished-container">
+                <div class="background-image2" *ngIf="bad"></div>
+                <div class="background-image1" *ngIf="good"></div>
+                <div class="background-image3" *ngIf="nice"></div>
+               <div class="fin-inner-cont">
+               <div class="flex-gap">
+                    <div class="nickname">{{nickname}}</div>
+                        <div class="score">
+                            your score is {{correctans}}/10
+                        </div>
+               </div>
+                    <button (click)="restartquiz()" class="restart" >restart</button>
+               </div>
+           </div>
+       </div>
     </div>
-<div class="container" *ngIf="finished">
-    <button (click)="start()" class="start"*ngIf="!started" >Start Quiz <mat-icon  class="arr-icon">navigate_next</mat-icon></button>
+<div class="container" *ngIf="!finished">
+    <button (click)="start()" class="start" *ngIf="!started" >Start Quiz <mat-icon  class="arr-icon">navigate_next</mat-icon></button>
  
     <div class="inner-cont">
         <div class="board" *ngIf="counter">

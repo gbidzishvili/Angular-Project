@@ -8,7 +8,7 @@ import { GetUsersDataService } from 'src/app/shared/services/get-users-data.serv
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit,OnChanges {
-nickname;
+  public nickname:string;
   constructor(private router:Router,private getUsersDataService:GetUsersDataService) { }
 
   ngOnInit(): void {

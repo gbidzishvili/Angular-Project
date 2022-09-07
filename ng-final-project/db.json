@@ -9,76 +9,14 @@
       "phoneNumber": "number"
     },
     {
+      "nickname": "giorgi1234",
       "email": "g_bidzishvili@cu.edu.ge",
-      "password": "gbidzishvili",
-      "confirmPass": "gbidzishvili",
-      "nickname": "gbidzishvili",
-      "phoneNumber": "+995963444777",
+      "password": "paroli123",
+      "confirmPass": "paroli123",
+      "phoneNumber": "+995545444522",
       "checkbox": true,
       "id": 2
-    },
-    {
-      "email": null,
-      "password": null,
-      "confirmPass": null,
-      "nickname": null,
-      "phoneNumber": null,
-      "checkbox": null,
-      "id": 3
-    },
-    {
-      "email": "nata@cu.edu.ge",
-      "password": "paroli1234",
-      "confirmPass": "paroli1234",
-      "nickname": "natabidz",
-      "phoneNumber": "+995648777111",
-      "checkbox": true,
-      "id": 4
-    },
-    {
-      "email": "nata@cu.edu.ge",
-      "password": "paroli1234",
-      "confirmPass": "paroli1234",
-      "nickname": "natabidz",
-      "phoneNumber": "+995648777111",
-      "checkbox": true,
-      "id": 5
-    },
-    {
-      "email": "nata@cu.edu.ge",
-      "password": "paroli1234",
-      "confirmPass": "paroli1234",
-      "nickname": "natabidz",
-      "phoneNumber": "+995444777111",
-      "checkbox": true,
-      "id": 6
-    },
-    {
-      "email": "nata@cu.edu.ge",
-      "password": "paroli1234",
-      "confirmPass": "paroli1234",
-      "nickname": "natabidz",
-      "phoneNumber": "+995444777111",
-      "checkbox": true,
-      "id": 7
-    },
-    {
-      "email": "nata@cu.edu.ge",
-      "password": "paroli1234",
-      "confirmPass": "paroli1234",
-      "nickname": "natabidz",
-      "phoneNumber": "+995222111333",
-      "checkbox": true,
-      "id": 8
-    },
-    {
-      "email": "nata@cu.edu.ge",
-      "password": "paroli1234",
-      "confirmPass": "paroli1234",
-      "nickname": "natabidz",
-      "phoneNumber": "+995222111333",
-      "checkbox": true,
-      "id": 9
     }
+    
   ]
 }

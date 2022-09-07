@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-quiz',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class QuizComponent implements OnInit {
   random:number;
   index:number;
-  finished=false;
+  finished:boolean=false;
   item;
   nickname;
   correctans=0;
@@ -19,34 +20,37 @@ export class QuizComponent implements OnInit {
   answer2=null;
   answer3=null;
   answer4=null;
-  correct_1=true;
-  correct_2=false;
-  correct_3=false;
-  correct_4=false;
+  correct_1:boolean=true;
+  correct_2:boolean=false;
+  correct_3:boolean=false;
+  correct_4:boolean=false;
   itemParsed;
   question;
   answer_1=null;
   answer_2=null;
   answer_3=null;
   answer_4=null;
-  progress=0;
-  counter=0;
-  started=false;
-  next=false;
-  restart=false;
-  ans1clicked=false;
-  ans1checked=false;
-  ans1cleared=false;
-  ans2clicked=false;
-  ans2checked=false;
-  ans2cleared=false;
-  ans3clicked=false;
-  ans3checked=false;
-  ans3cleared=false;
-  ans4clicked=false;
-  ans4checked=false;
-  ans4cleared=false;
-  canClick=true;
+  progress:number=0;
+  counter:number=0;
+  started:boolean=false;
+  next:boolean=false;
+  restart:boolean=false;
+  ans1clicked:boolean=false;
+  ans1checked:boolean=false;
+  ans1cleared:boolean=false;
+  ans2clicked:boolean=false;
+  ans2checked:boolean=false;
+  ans2cleared:boolean=false;
+  ans3clicked:boolean=false;
+  ans3checked:boolean=false;
+  ans3cleared:boolean=false;
+  ans4clicked:boolean=false;
+  ans4checked:boolean=false;
+  ans4cleared:boolean=false;
+  canClick:boolean=true;
+  bad:boolean=false;
+  good:boolean=false;
+  nice:boolean=false;
   constructor(private http:HttpClient) { }
   ngOnInit(): void {
     this.nickname = localStorage.getItem("nickname");
@@ -103,11 +107,21 @@ export class QuizComponent implements OnInit {
   nextquestion(){
     console.log(this.counter);
     if(this.counter===10) {
-      console.log('shevida');
       this.incorrectans++;
       this.progress+=10; 
       this.finished=true;
       this.restart=true;
+      if(this.correctans>=0 && this.correctans<5){
+        this.bad = true;
+      }
+      if(this.correctans>=5 && this.correctans<8){
+        this.good = true;
+      }
+      if(this.correctans>=8 && this.correctans<=10){
+        this.nice = true;
+      }
+      
+
     }
     if(this.counter<10){
     this.checkAnswers();
@@ -224,6 +238,12 @@ export class QuizComponent implements OnInit {
   this.answer_4=null;
   this.correctans=0;
   this.incorrectans = 0;
+  this.bad=false;
+  this.good=false;
+  this.nice=false;
+  }
+  canDeactivate():Observable<boolean > | Promise<boolean > | boolean  {
+    return confirm("Do you want to leave this page");
   }
 }
 

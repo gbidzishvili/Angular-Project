@@ -1,59 +1,61 @@
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
-  <div class="div-cont">
-    <label><span class="color-red">*</span> E-mail:</label>
-    <input
+  <div class="register">Sign Up</div>
+  <div class="input-container">
+    <label> Nickname:</label>
+    <input  [ngClass]="checkIfValid(this.signupForm)" type="text" formControlName="nickname"  />
+    <div *ngIf="!signupForm.get('nickname').valid && signupForm.get('nickname').touched || nicknameErr" class="error">Use letters,numbers or symbols</div>
+  </div>
+  
+  <div class="input-container">
+    
+    <label> E-mail:</label>
+    <input 
+    [ngClass]="{redborder:emailErr}"
       type="text"
       class="form-control"
-      id="username"
       formControlName="email"
-      
     />
+
+    <div *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched || emailErr" class="error">Use Valid E-mail</div>
   </div>
 
-  <br />
-  <div class="div-cont">
-    <label><span class="color-red">*</span> Password:</label>
-    <input type="text" formControlName="password" [value]="password" />
+  
+  <div class="input-container">
+    <label> Password:</label>
+    <input [ngClass]="{redborder:passwordErr}" type="text" formControlName="password"  />
+    <div *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched || passwordErr" class="error">Use letters,numbers or symbols</div>
   </div>
-  <br />
-  <div class="div-cont">
-    <label><span class="color-red">*</span> Confirm Password:</label>
-    <input type="text" formControlName="confirmPass" [value]="confirmPass" />
+  
+  <div class="input-container">
+    <label> Confirm Password:</label>
+    <input [ngClass]="{redborder:confirmPassErr}" type="text" formControlName="confirmPass"  />
+    <div *ngIf="!signupForm.get('confirmPass').valid && signupForm.get('confirmPass').touched || confirmPassErr" class="error">Use letters,numbers or symbols</div>
   </div>
-  <br />
-  <div class="div-cont">
-    <label><span class="color-red">*</span> Nickname:</label>
-    <input type="text" formControlName="nickname" [value]="nickname" />
-  </div>
-  <br />
-  <div class="div-cont">
-    <label><span class="color-red">*</span> Phone Number:</label>
-    <input type="text" formControlName="phoneNumber" [value]="phoneNumber" />
+  
+ 
+  <div class="input-container">
+    <label> Phone Number:</label>
+    <input [ngClass]="{redborder:phoneNumberErr}" type="text" formControlName="phoneNumber"  />
+    <div *ngIf="!signupForm.get('phoneNumber').valid && signupForm.get('phoneNumber').touched || phoneNumberErr" class="error">Use format +995 *** *** ***</div>
   </div>
 
-  <br />
+  
 
-  <div class="div-cont check">
-    <input
-      type="checkbox"
-      id="check"
-      ngDefaultControl
-      formControlName="checkbox"
-    /><label for="check" class="check"
-      >I have read the <a href="#" class="underline"> agreeement</a></label
-    >
+  <div class="input-container ">
+   <div class="div-cont ">
+      <input 
+        type="checkbox"
+        
+        formControlName="checkbox"
+      /><label for="check" class="check"
+        >I have read the <a href="#" class="underline"> agreeement</a></label
+      >
+   </div>
+    <div *ngIf="!signupForm.get('checkbox').valid && signupForm.get('checkbox').touched || checkboxErr" class="error">Checkbox is required</div>
   </div>
-  <br />
-  <div class="div-cont regbtns col-md-12">
-    <!-- <li *ngFor="let el of arr; let i = index">
-    Person
-    {{ i + 1 }}: email:{{ el.email }}; password: {{ el.password }};
-    confirmPass:{{ el.confirmPass }}; nickname:{{ el.nickname }}; phoneNumber:{{
-      el.phoneNumber
-    }}; website:{{ el.website }};salary:{{ el.salary }}
-
-  </li> -->
-    <button class="btn" type="submit" [disabled]="isAnswered()">Sign Up</button>
+  
+  <div class="div-cont regbtns ">
+    <button class="btn" type="submit">Sign Up</button>
     <span> |</span>
     <button class="btn" type="submit" (click)="goToLogin()">
       Go to Login Page

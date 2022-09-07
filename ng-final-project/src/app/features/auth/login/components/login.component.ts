@@ -8,14 +8,13 @@ import { AuthServiceService } from '../../services/auth-service.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  signupForm: FormGroup;
+  public signupForm: FormGroup;
   public value: boolean = false;
-  check = false;
-  display = false;
-  info = '';
-  arr = [];
-  email = '';
-  password = '';
+  public check = false;
+  public display = false;
+  public info:string = '';
+  public email:string = '';
+  public password:string = '';
 
   authenticated;
   constructor(

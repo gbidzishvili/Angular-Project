@@ -6,24 +6,25 @@
     background-color:#ffc200;
     height: 50px;
     width: 100vw;
+    .inner-cont{
+        display: flex;
+        width: 170px;
+        justify-content: center;
+        gap: 15px;
+        button{
+            border: none;
+            background-color: rgba(0, 0, 0, 0.1803921569);
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    }
+    .logo{
+        font-size: 30px;
+        font-weight: bold;
+        font-family: "roboto";
+        color: #fff;
+    }
 }
 
-.inner-cont{
-    display: flex;
-    width: 170px;
-    justify-content: center;
-    gap: 15px;
-}
-button{
-    border: none;
-    background-color: rgba(0, 0, 0, 0.1803921569);
-    padding: 5px 10px;
-    border-radius: 15px;
-    cursor: pointer;
-}
-.logo{
-    font-size: 30px;
-    font-weight: bold;
-    font-family: "roboto";
-    color: #fff;
-}
+

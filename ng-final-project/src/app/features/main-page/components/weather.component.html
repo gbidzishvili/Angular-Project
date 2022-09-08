@@ -3,28 +3,26 @@
    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     
 </head>
 <body>   
     <div class="background">
         <app-navigation></app-navigation>
-<div class="main-cont">
-   
-        <app-side-bar
-         [currtemp]="temp"
-         [tumTemp]="tumTempAvg" 
-         [tumsky]="tumsky"
-         [dayAfttumtemp]="dayAfttumtempAvg" 
-         [dayAfttumsky]="dayAfttumsky"
-         [twoDaysAftTumTemp]="twoDaysAftTumTempAvg" 
-         [twoDaysAftTumsky]="twoDaysAftTumsky" 
-         [threeDaysAftTumTemp]="threeDaysAftTumTempAvg" 
-         [threeDaysAftTumsky]="threeDaysAftTumsky" 
-         [city]="city | titlecase"
-         [sky]="sky"
-          ></app-side-bar>
+        <div class="main-cont">
+            <app-side-bar
+            [currtemp]="temp"
+            [tumTemp]="tumTempAvg" 
+            [tumsky]="tumsky"
+            [dayAfttumtemp]="dayAfttumtempAvg" 
+            [dayAfttumsky]="dayAfttumsky"
+            [twoDaysAftTumTemp]="twoDaysAftTumTempAvg" 
+            [twoDaysAftTumsky]="twoDaysAftTumsky" 
+            [threeDaysAftTumTemp]="threeDaysAftTumTempAvg" 
+            [threeDaysAftTumsky]="threeDaysAftTumsky" 
+            [city]="city | titlecase"
+            [sky]="sky"
+            ></app-side-bar>
              <div class="card-container">
                    <div class="search-bar">
                          <form [formGroup]="Form" (ngSubmit)="onSubmit(Form.value)">
@@ -34,23 +32,22 @@
                             formControlName="search"
                             (click)="clearText()"
                            >
-                        <button type="submit" class="submit"><mat-icon color="primary" class="col3 material-icons-outlined">search</mat-icon></button>
-                       </form>
-                       <div class="error" *ngIf="!correctCountry">Choose Valid City</div>
+                           <button type="submit" class="submit"><mat-icon color="primary" class="col3 material-icons-outlined">search</mat-icon></button>
+                         </form>
+                         <div class="error" *ngIf="!correctCountry">Choose Valid City</div>
                    </div>
                    
-                       <div class="card">
-                    
-                    <div class="backgroundImage flex-cont" *ngIf="sunny">
-                        <div class="city ">{{city | titlecase}}</div>
-                        <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
-                    </div>
-                    <div class="backgroundImage2 flex-cont" *ngIf="!sunny">
-                        <div class="city">{{city| titlecase}}</div>
-                        <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
-                    </div>
-                    <span class="info">More Information</span>
-                    <div class="infocont">
+                    <div class="card">
+                       <div class="backgroundImage flex-cont" *ngIf="sunny">
+                            <div class="city ">{{city | titlecase}}</div>
+                            <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
+                       </div>
+                       <div class="backgroundImage2 flex-cont" *ngIf="!sunny">
+                            <div class="city">{{city| titlecase}}</div>
+                            <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
+                       </div>
+                       <span class="info">More Information</span>
+                       <div class="infocont">
                         <div class="cont">
                             <div class="align-vertically"><mat-icon color="primary" class="col4">ac_unit</mat-icon><span>Min_temp {{Mintemp}}°</span></div>
                             <div class="align-vertically height40px"><mat-icon color="primary" class="col3 material-icons-outlined">water_drop</mat-icon><span>Humidity {{humidity}}%</span></div>

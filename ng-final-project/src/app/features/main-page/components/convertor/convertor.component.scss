@@ -1,11 +1,10 @@
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 15px;
-}
-.convertor{
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  .convertor {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,40 +17,40 @@
     font-family: "roboto";
     font-size: 14px;
     width: 225px;
-}
-.inner-cont{
+  }
+  .inner-cont {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 5px;
-}
-input{
+  }
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    .small-cont {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+  input {
     width: 80px;
     border: none;
     background-color: #0000003b;
     border-radius: 5px;
     padding: 4px 8px;
-}
-input:focus{
+  }
+  input:focus {
     outline: none;
-}
-.flex{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 10px;
-}
-.small-cont{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    
-}
-mat-icon{
+  }
+  mat-icon {
     height: 23px;
-}
-label{
+  }
+  label {
     font-weight: bold;
+  }
 }

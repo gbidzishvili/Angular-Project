@@ -1,15 +1,28 @@
-.top-row{
-    background-color: #98ceff;
-    width: 100vw;
-    height: 30px;
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #98ceff;
+  padding: 5px 10px;
+  width: 100vw;
+  height: 50px;
+  .inner-cont {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-button{
-    border: none;
-    background-color: rgba(0, 0, 0, 0.1803921569);
-    padding: 5px 10px;
-    border-radius: 15px;
-    cursor: pointer;
+    width: 170px;
+    justify-content: center;
+    gap: 15px;
+    button {
+      border: none;
+      background-color: rgba(0, 0, 0, 0.1803921569);
+      padding: 5px 10px;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+  }
+  .logo {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "roboto";
+    color: #fff;
+  }
 }

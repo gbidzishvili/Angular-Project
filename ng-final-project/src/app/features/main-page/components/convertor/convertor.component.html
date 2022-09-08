@@ -1,14 +1,13 @@
 <div class="container">
     <button class="convertor" (click)="display()">Convertor <mat-icon>expand_more</mat-icon></button>
     <form [formGroup]="converterForm">
-        <div class="inner-cont" *ngIf="clicked">
-      
+    <div class="inner-cont" *ngIf="clicked">
         <div class="flex">
             <div class="small-cont">
                 <label *ngIf="!reversedDistance" >Kilometers</label>
                 <label *ngIf="reversedDistance">Miles</label>
             <input formControlName = "kilometers" type="text">
-            </div>
+        </div>
 
             <mat-icon (click)="reverseDistance()" > change_circle </mat-icon>
             <div class="small-cont">

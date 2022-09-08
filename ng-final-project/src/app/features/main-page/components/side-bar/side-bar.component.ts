@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { map, share, Subscription, timer } from 'rxjs';
 
 @Component({
@@ -6,19 +6,19 @@ import { map, share, Subscription, timer } from 'rxjs';
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.scss']
 })
-export class SideBarComponent implements OnInit,OnInit {
+export class SideBarComponent implements OnInit,OnChanges {
   @Input()currtemp:string;
   @Input()tumTemp:string;
-  @Input()dayAfttumtem:string;
-  @Input()twoDaysAftTumTemp:string;
-  @Input()threeDaysAftTumTemp:string;
-  @Input()city:string;
-  @Input()sky:string;
   @Input()tumsky:string;
+  @Input()dayAfttumtemp:string;
   @Input()dayAfttumsky:string;
   @Input()twoDaysAftTumsky:string;
+  @Input()twoDaysAftTumTemp:string;
+  @Input()threeDaysAftTumTemp:string;
   @Input()threeDaysAftTumsky:string;
-  public rxTime:Date    = new Date();
+  @Input()city:string;
+  @Input()sky:string;
+  public rxTime:Date = new Date();
   public tumSunny:boolean=false;
   public tumRainy:boolean=false;
   public tumCloudy:boolean=false;
@@ -45,10 +45,15 @@ export class SideBarComponent implements OnInit,OnInit {
   public snowy:boolean=false;
   public subscription: Subscription;
   public today:string;
-  constructor() { }
+  public currHours:number;
+  private daytime:boolean;
+  private night:boolean;
 
+  constructor() { }
+ 
   ngOnInit(): void {
-    
+    this.currHours = new Date().getHours();
+    this.getTodaysState();
     if(this.sky ==='Clear') this.sunny=true;
     if(this.sky==='Clouds')this.cloudy=true;
     if(this.sky==='Rain')this.rainy=true;
@@ -57,7 +62,7 @@ export class SideBarComponent implements OnInit,OnInit {
     const dayafttom = new Date(Date.now() + (3600 * 1000 * 24)*2);
     const twodaysafttom = new Date(Date.now() + (3600 * 1000 * 24)*3);
     const threedaysafttom = new Date(Date.now() + (3600 * 1000 * 24)*4);
-    // console.log(this.today = currentDate.toLocaleDateString('en-us', { weekday: 'long', month: 'short', day: 'numeric' }));
+    this.today = new Date().toLocaleDateString('en-us', {  weekday: 'long',  day: 'numeric',month: 'long'});
     this.day_2 =  tomorrow.toLocaleDateString('en-us', { weekday: 'long' });
     this.day_3 =  dayafttom.toLocaleDateString('en-us', { weekday: 'long' });
     this.day_4 =  twodaysafttom.toLocaleDateString('en-us', { weekday: 'long' });
@@ -73,60 +78,298 @@ export class SideBarComponent implements OnInit,OnInit {
  });
 
 
- if(this.tumsky = 'sunny'){
-  this.tumSunny=true
+ if(this.tumsky === 'sunny'){
+  this.tumSunny=true;
+  this.tumCloudy=false;
+  this.tumSnowy=false;
+  this.tumRainy=false;
  }
- else if(this.tumsky = 'snowy'){
-  this.tumSnowy=true
+ else if(this.tumsky === 'snowy'){
+  this.tumSnowy=true;
+  this.tumCloudy=false;
+  this.tumSunny=false;
+  this.tumRainy=false;
  }
- else if(this.tumsky = 'rainy'){
-  this.tumRainy=true
+ else if(this.tumsky === 'rainy'){
+  this.tumRainy=true;
+  this.tumCloudy=false;
+  this.tumSnowy=false;
+  this.tumSunny=false;
  }
- else if(this.tumsky = 'cloudy'){
+ else if(this.tumsky === 'cloudy'){
   this.tumCloudy=true
+  this.tumSunny=false;
+  this.tumSnowy=false;
+  this.tumRainy=false;
  }
 // 2
- if(this.dayAfttumsky = 'sunny'){
-  this.dayAfttumSunny=true
+ if(this.dayAfttumsky === 'sunny'){
+  this.dayAfttumSunny=true;
+  this.dayAfttumCloudy=false;
+  this.dayAfttumSnowy=false;
+  this.dayAfttumRainy=false;
  }
- else if(this.dayAfttumsky = 'snowy'){
-  this.tumSnowy=true
+ else if(this.dayAfttumsky === 'snowy'){
+  this.dayAfttumSnowy=true;
+  this.dayAfttumSunny=false;
+  this.dayAfttumCloudy=false;
+  this.dayAfttumRainy=false;
+
  }
- else if(this.dayAfttumsky = 'rainy'){
-  this.tumRainy=true
+ else if(this.dayAfttumsky === 'rainy'){
+  this.dayAfttumRainy=true;
+  this.dayAfttumSnowy=false;
+  this.dayAfttumSunny=false;
+  this.dayAfttumCloudy=false;
+
  }
- else if(this.dayAfttumsky = 'cloudy'){
-  this.tumCloudy=true
+ else if(this.dayAfttumsky === 'cloudy'){
+  this.dayAfttumCloudy=true;
+  this.dayAfttumRainy=false;
+  this.dayAfttumSnowy=false;
+  this.dayAfttumSunny=false;
+
+  
  }
 //  3
-if(this.twoDaysAftTumsky = 'sunny'){
-  this.twoDaysAftTumSunny=true
+if(this.twoDaysAftTumsky === 'sunny'){
+  this.twoDaysAftTumSunny=true;
+  this.twoDaysAftTumRainy=false;
+  this.twoDaysAftTumCloudy=false;
+  this.twoDaysAftTumSnowy=false;
  }
- else if(this.twoDaysAftTumsky = 'snowy'){
-  this.twoDaysAftTumSnowy=true
+ else if(this.twoDaysAftTumsky === 'snowy'){
+  this.twoDaysAftTumSnowy=true;
+  this.twoDaysAftTumSunny=false;
+  this.twoDaysAftTumRainy=false;
+  this.twoDaysAftTumCloudy=false;
+
  }
- else if(this.twoDaysAftTumsky = 'rainy'){
-  this.twoDaysAftTumRainy=true
+ else if(this.twoDaysAftTumsky === 'rainy'){
+  this.twoDaysAftTumRainy=true;
+  this.twoDaysAftTumSunny=false;
+  this.twoDaysAftTumSnowy=false;
+  this.twoDaysAftTumCloudy=false;
+
  }
- else if(this.twoDaysAftTumsky = 'cloudy'){
-  this.twoDaysAftTumCloudy=true
+ else if(this.twoDaysAftTumsky === 'cloudy'){
+  this.twoDaysAftTumCloudy=true;
+  this.twoDaysAftTumRainy=false;
+  this.twoDaysAftTumSunny=false;
+  this.twoDaysAftTumSnowy=false;
  }
 //  4
-if(this.threeDaysAftTumsky = 'sunny'){
-  this.threeDaysAftTumSunny=true
+if(this.threeDaysAftTumsky === 'sunny'){
+  this.threeDaysAftTumSunny=true;
+  this.threeDaysAftTumRainy=false;
+  this.threeDaysAftTumCloudy=false;
+  this.threeDaysAftTumSnowy=false;
+
  }
- else if(this.threeDaysAftTumsky = 'snowy'){
-  this.threeDaysAftTumSnowy=true
+ else if(this.threeDaysAftTumsky === 'snowy'){
+  this.threeDaysAftTumSnowy=true;
+  this.threeDaysAftTumRainy=false;
+  this.threeDaysAftTumSunny = false;
+  this.threeDaysAftTumCloudy=false;
  }
- else if(this.threeDaysAftTumsky = 'rainy'){
-  this.threeDaysAftTumRainy=true
+ else if(this.threeDaysAftTumsky === 'rainy'){
+  this.threeDaysAftTumRainy=true;
+  this.threeDaysAftTumSnowy=false;
+  this.threeDaysAftTumSunny = false;
+  this.threeDaysAftTumCloudy=false;
  }
- else if(this.threeDaysAftTumsky = 'cloudy'){
-  this.threeDaysAftTumCloudy=true
+ else if(this.threeDaysAftTumsky === 'cloudy'){
+  this.threeDaysAftTumCloudy=true;
+  this.threeDaysAftTumRainy=false;
+  this.threeDaysAftTumSnowy=false;
+  this.threeDaysAftTumSunny = false;
  }
   }
+  getTodaysState(){
+    if(this.currHours>=20 && this.currHours<=23 || this.currHours>=0 && this.currHours<=6){
+      this.night = true;
+    }else{
+      this.daytime = true;
+    }
+  }
+  ngOnChanges(){
+this.tumSunny=false;
+   this.tumRainy=false;
+   this.tumCloudy=false;
+   this.tumSnowy=false;
+   this.dayAfttumSunny=false;
+   this.dayAfttumRainy=false;
+   this.dayAfttumCloudy=false;
+   this.dayAfttumSnowy=false;
+   this.twoDaysAftTumSunny=false;
+   this.twoDaysAftTumRainy=false;
+   this.twoDaysAftTumCloudy=false;
+   this.twoDaysAftTumSnowy=false;
+   this.threeDaysAftTumSunny=false;
+   this.threeDaysAftTumRainy=false;
+   this.threeDaysAftTumCloudy=false;
+   this.threeDaysAftTumSnowy=false;
+   if(this.sky ==='Clear') {
+    this.sunny=true;
+    this.cloudy=false;
+    this.rainy=false;
+    this.snowy=false;
+  }
+   if(this.sky==='Clouds'){
+    this.cloudy=true;
+    this.sunny=false;
+    this.rainy=false;
+    this.snowy=false;
 
+   }
+   if(this.sky==='Rain'){
+    this.rainy=true;
+    this.cloudy=false;
+    this.sunny=false;
+    this.snowy=false;
+
+   }
+   if(this.sky==='Snow'){
+    this.snowy=true;
+    this.rainy=false;
+    this.cloudy=false;
+    this.sunny=false;
+   }
+   const tomorrow = new Date(Date.now() + (3600 * 1000 * 24));
+   const dayafttom = new Date(Date.now() + (3600 * 1000 * 24)*2);
+   const twodaysafttom = new Date(Date.now() + (3600 * 1000 * 24)*3);
+   const threedaysafttom = new Date(Date.now() + (3600 * 1000 * 24)*4);
+   this.today = new Date().toLocaleDateString('en-us', {  weekday: 'long',  day: 'numeric',month: 'long'});
+   this.day_2 =  tomorrow.toLocaleDateString('en-us', { weekday: 'long' });
+   this.day_3 =  dayafttom.toLocaleDateString('en-us', { weekday: 'long' });
+   this.day_4 =  twodaysafttom.toLocaleDateString('en-us', { weekday: 'long' });
+   this.day_5=  threedaysafttom.toLocaleDateString('en-us', { weekday: 'long' });
+   // RxJS clock
+this.subscription = timer(0, 1000)
+.pipe(
+  map(() => new Date()),
+  share()
+)
+.subscribe(time => {
+  this.rxTime = time;
+});
+
+
+if(this.tumsky === 'sunny'){
+ this.tumSunny=true;
+ this.tumCloudy=false;
+ this.tumSnowy=false;
+ this.tumRainy=false;
+}
+else if(this.tumsky === 'snowy'){
+ this.tumSnowy=true;
+ this.tumCloudy=false;
+ this.tumSunny=false;
+ this.tumRainy=false;
+}
+else if(this.tumsky === 'rainy'){
+ this.tumRainy=true;
+ this.tumCloudy=false;
+ this.tumSnowy=false;
+ this.tumSunny=false;
+}
+else if(this.tumsky === 'cloudy'){
+ this.tumCloudy=true
+ this.tumSunny=false;
+ this.tumSnowy=false;
+ this.tumRainy=false;
+}
+// 2
+if(this.dayAfttumsky === 'sunny'){
+ this.dayAfttumSunny=true;
+ this.dayAfttumCloudy=false;
+ this.dayAfttumSnowy=false;
+ this.dayAfttumRainy=false;
+}
+else if(this.dayAfttumsky === 'snowy'){
+ this.dayAfttumSnowy=true;
+ this.dayAfttumSunny=false;
+ this.dayAfttumCloudy=false;
+ this.dayAfttumRainy=false;
+
+}
+else if(this.dayAfttumsky === 'rainy'){
+ this.dayAfttumRainy=true;
+ this.dayAfttumSnowy=false;
+ this.dayAfttumSunny=false;
+ this.dayAfttumCloudy=false;
+
+}
+else if(this.dayAfttumsky === 'cloudy'){
+ this.dayAfttumCloudy=true;
+ this.dayAfttumRainy=false;
+ this.dayAfttumSnowy=false;
+ this.dayAfttumSunny=false;
+
+ 
+}
+//  3
+if(this.twoDaysAftTumsky === 'sunny'){
+ this.twoDaysAftTumSunny=true;
+ this.twoDaysAftTumRainy=false;
+ this.twoDaysAftTumCloudy=false;
+ this.twoDaysAftTumSnowy=false;
+}
+else if(this.twoDaysAftTumsky === 'snowy'){
+ this.twoDaysAftTumSnowy=true;
+ this.twoDaysAftTumSunny=false;
+ this.twoDaysAftTumRainy=false;
+ this.twoDaysAftTumCloudy=false;
+
+}
+else if(this.twoDaysAftTumsky === 'rainy'){
+ this.twoDaysAftTumRainy=true;
+ this.twoDaysAftTumSunny=false;
+ this.twoDaysAftTumSnowy=false;
+ this.twoDaysAftTumCloudy=false;
+
+}
+else if(this.twoDaysAftTumsky === 'cloudy'){
+ this.twoDaysAftTumCloudy=true;
+ this.twoDaysAftTumRainy=false;
+ this.twoDaysAftTumSunny=false;
+ this.twoDaysAftTumSnowy=false;
+
+}
+//  4
+if(this.threeDaysAftTumsky === 'sunny'){
+ this.threeDaysAftTumSunny=true;
+ this.threeDaysAftTumRainy=false;
+ this.threeDaysAftTumCloudy=false;
+ this.threeDaysAftTumSnowy=false;
+
+}
+else if(this.threeDaysAftTumsky === 'snowy'){
+ this.threeDaysAftTumSnowy=true;
+ this.threeDaysAftTumRainy=false;
+ this.threeDaysAftTumSunny = false;
+ this.threeDaysAftTumCloudy=false;
+
+}
+else if(this.threeDaysAftTumsky === 'rainy'){
+ this.threeDaysAftTumRainy=true;
+ this.threeDaysAftTumSnowy=false;
+ this.threeDaysAftTumSunny = false;
+ this.threeDaysAftTumCloudy=false;
+
+
+}
+else if(this.threeDaysAftTumsky === 'cloudy'){
+ this.threeDaysAftTumCloudy=true;
+ this.threeDaysAftTumRainy=false;
+ this.threeDaysAftTumSnowy=false;
+ this.threeDaysAftTumSunny = false;
+
+
+}
+  }
   ngOnDestroy() {
+    
     if (this.subscription) {
       this.subscription.unsubscribe();
     }

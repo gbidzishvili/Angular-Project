@@ -243,7 +243,7 @@ export class QuizComponent implements OnInit {
   this.nice=false;
   }
   canDeactivate():Observable<boolean > | Promise<boolean > | boolean  {
-    return confirm("Do you want to leave this page");
+    return confirm("Do you want to leave this page?");
   }
 }
 

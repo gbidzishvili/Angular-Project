@@ -1,15 +1,15 @@
-form{
+form {
   display: flex;
   margin: 80px auto;
-  width: 350px;
-  height: 420px;
+  width: 340px;
+
   flex-direction: column;
   gap: 15.5px;
   padding: 14px 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 3px #0000003d;
 }
-.register{
+.register {
   padding: 5px 5px;
   background-color: #e3efef;
   display: flex;
@@ -22,11 +22,10 @@ form{
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
-
 }
 label {
   display: flex;
-    justify-content: flex-start;
+  justify-content: flex-start;
 }
 .color-red {
   color: red;
@@ -46,29 +45,27 @@ label.check {
   border: none;
   border-radius: 5px;
   color: #fff;
-  
 }
-
+input {
+  padding: 3px 6px;
+}
 input.ng-invalid.ng-touched {
   border: 1px solid red;
-  // border: none;
 }
 .regbtns {
-  
   gap: 5px;
   font-weight: bold;
 }
-.input-container{
+.input-container {
   display: flex;
   flex-direction: column;
 }
-.error{
+.error {
   color: red;
 }
-.redborder{
+.redborder {
   border: 1px solid red;
 }
-
-.dispnone{
+.dispnone {
   display: none;
 }

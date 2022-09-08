@@ -8,7 +8,7 @@ const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:"full"},
   {path:'login',loadChildren:()=> import('./features/auth/login/login.module').then(m=>m.LoginModule),},
   {path:'register',loadChildren:()=> import('./features/auth/registration/registration.module').then(m=>m.RegistrationModule)},
-  {path:'weather',loadChildren:()=> import('./features/main-page/weather.module').then(m=>m.WeatherModule),canActivate:[LoginGuard],canDeactivate:[CandeactivateGuard],},
+  {path:'weather',loadChildren:()=> import('./features/main-page/weather.module').then(m=>m.WeatherModule),canActivate:[LoginGuard],canDeactivate:[CandeactivateGuard]},
   {path:'quiz',loadChildren:()=> import('./features/quiz/quiz.module').then(m=>m.QuizModule),canActivate:[LoginGuard],canDeactivate:[CandeactivateGuard]},
    {
     path: '**',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { delay, share } from 'rxjs';
+import { catchError, delay, of, share, tap } from 'rxjs';
 @Component({
   selector: 'app-currency-exchanger',
   templateUrl: './currency-exchanger.component.html',
@@ -22,10 +22,9 @@ export class CurrencyExchangerComponent implements OnInit {
   public additinalAmount:number;
   public additinalCur:string;
   constructor(private http: HttpClient) {}
-  round(number){
+  // round(number){
 
-    return Math.round(number*10000)/10000;
-  }
+  // }
   ngOnInit(): void {
     this.fetchPost()
     .subscribe(
@@ -197,8 +196,12 @@ export class CurrencyExchangerComponent implements OnInit {
         )
     }
   calculateValue(rate: number, val: number) {
+    // const celsiusprecision = celsius.toPrecision(4);
+    // const parsed = parseFloat(celsiusprecision);
     this.rate = rate;
     this.Am2 = rate * val;
+    this.Am2 =  +this.Am2.toPrecision(4);
+    this.Am2 =  +parseFloat(this.Am2.toString());
     this.Am1 = val;
     this.currencyForm.setValue(
       {
@@ -230,15 +233,7 @@ export class CurrencyExchangerComponent implements OnInit {
       this.Am1 = this.Am2;
 
       this.calculateValue(this.rate,this.Am1)
-      // this.currencyForm.setValue(
-      //   {
-      //     cur1: this.cur1,
-      //     am1: this.Am1,
-      //     cur2: this.cur2,
-      //     am2: this.Am2,
-      //   },
-      //   { emitEvent: false }
-      // );
+    
     }
     reverseCurr(){
       console.log(this.cur1,this.cur2);
@@ -291,6 +286,10 @@ export class CurrencyExchangerComponent implements OnInit {
         share();
       },
       
-    );;
+    ),
+    () => {
+      console.log('Invalid Name Please Enter valid Currency');
+      
+    }
     }
 }

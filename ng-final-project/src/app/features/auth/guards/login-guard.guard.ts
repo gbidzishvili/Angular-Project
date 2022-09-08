@@ -17,22 +17,24 @@ export class LoginGuard implements CanActivate {
     private router: Router,
     private authService: AuthServiceService
   ) {}
-
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    state: RouterStateSnapshot,
+    
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // this.authservice.auth(
-    //   this.signupForm.get('email').value,
-    //   this.signupForm.get('password').value
-    // );
-    if (this.authService.isAuthenticated) {
+      console.log('/////****');
+      
+      console.log(localStorage.getItem("registered"));
+      
+    if (localStorage.getItem("registered")==="true") {
       return true;
     } else {
+      console.log('sdfsfjakdfadfasdfasdfasdfad');
+      
       this.router.navigate(['/']);
     }
   }

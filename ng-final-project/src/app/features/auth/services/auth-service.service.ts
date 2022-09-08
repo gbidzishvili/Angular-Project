@@ -35,16 +35,10 @@ export class AuthServiceService {
           )[0];
           this.email = email;
           this.password = password;
+          localStorage.setItem("registered","true")
           this.isAuthenticated = true;
-          // console.log(user.nickName);
-          
           if (user) {
-            // console.log(user["nickname"]);
             localStorage.setItem(`nickname`,user["nickname"])
-            // this.getUsersDataService.getkey(`${this.counter}`);
-            // this.counter=this.counter+1;
-            // this.getUsersDataService.getNickname(`${this.counter}`);
-          
             this.router.navigate(['/weather']);
             return true;
           } else {

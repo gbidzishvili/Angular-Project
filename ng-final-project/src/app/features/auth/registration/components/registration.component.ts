@@ -19,15 +19,19 @@ export class RegistrationComponent implements OnInit {
   public confirmPassErr:boolean=false;
   public phoneNumberErr:boolean=false;
   public checkboxErr:boolean=false;
+  public submitted:boolean=false;
   constructor(
     private http: HttpClient,
     private router: Router,
   ) {}
   ngOnInit() {
+ 
+    
     this.signupForm = new FormGroup(
       {
         nickname: new FormControl(null, [
           Validators.required,
+          Validators.minLength(7),
           Validators.pattern('^[a-zA-Z0-9-!$%@#?^&*()_+|~=\\]`{}[:";\\\'<>?,./\\\\]*$'),
         ]),
         email: new FormControl(null, [Validators.required, Validators.email]),
@@ -56,12 +60,15 @@ export class RegistrationComponent implements OnInit {
         this.arr.push(val[x]);
       }
     });
+    console.log('first');
+    
+    console.log(this.signupForm.value.checkbox);
+    
   }
   onSubmit(postData: user) {
-    console.log('postData');
-    
-    console.log(postData);
-    
+    if(!this.submitted){
+
+    this.submitted=true;
      if(!!postData.nickname!==true){
       this.nicknameErr=true;
     }
@@ -89,16 +96,53 @@ export class RegistrationComponent implements OnInit {
    console.log(this.signupForm);
    
     return true;
-  }
+  }}
   }
   goToLogin() {
     this.router.navigate(['/']);
   }
-  checkIfValid(signupForm){
-    console.log('///');
+  checkIfValidvalue(value){
+    console.log('/*/*');
     
-    console.log(signupForm);
+    console.log(this.signupForm.get("nickname").touched);
+    
+    if(this.submitted){
+      if(this.signupForm.get(`${value.getAttribute('formControlName')}`).invalid && this.signupForm.get(`${value.getAttribute('formControlName')}`).touched){
+     
     return "redborder";
-    if(this.signupForm.value.value1){}
   }
+   else{
+    return null;
+  }
+    }
+}
+
+showErrMethod(submittedValue:string){
+  if(submittedValue===null && this.submitted){
+    return true;
+  }else {
+    return false;
+  }
+}
+checkIfwrittencorrectly(value){
+  if(this.signupForm.get(`${value.getAttribute('formControlName')}`).invalid && 
+  this.signupForm.get(`${value.getAttribute('formControlName')}`).touched && 
+  this.signupForm.get(`${value.getAttribute('formControlName')}`).value !== null){
+return true;
+  }
+
+}
+enterValue(value){
+  if(`${value.getAttribute('formControlName')}`==="checkbox"){
+    if(this.submitted && this.signupForm.get(`${value.getAttribute('formControlName')}`).value===null)
+    {return true;}
+  }
+  if(this.signupForm.get(`${value.getAttribute('formControlName')}`).touched
+   && this.signupForm.get(`${value.getAttribute('formControlName')}`).value===null ||this.submitted && this.signupForm.get(`${value.getAttribute('formControlName')}`).value===null
+   ){
+    return true;
+  }
+
+  
+}
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs';
 import { AuthServiceService } from '../../services/auth-service.service';
 @Component({
   selector: 'app-login',
@@ -15,15 +16,12 @@ export class LoginComponent implements OnInit {
   public info:string = '';
   public email:string = '';
   public password:string = '';
-
-  authenticated;
+  public submitted:boolean=false;
   constructor(
     private router: Router,
     private authservice: AuthServiceService
   ) {}
   ngOnInit() {
-    // console.log(this.authservice.email, this.authservice.password);
-
     this.signupForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [
@@ -38,16 +36,43 @@ export class LoginComponent implements OnInit {
     this.authservice.getPassword(this.signupForm.get('password').value);
   }
   onSubmit() {
+    this.submitted=true;
     this.authservice.auth(
       this.signupForm.get('email').value,
       this.signupForm.get('password').value
     );
+  }
+  checkIfValidvalue(value){
+    if(this.submitted){
+      if(this.signupForm.get(`${value.getAttribute('formControlName')}`).invalid && this.signupForm.get(`${value.getAttribute('formControlName')}`).touched){
+    return "redborder";
+  }
+   else{
+    return null;
+  }
+    }
+}
+checkIfwrittencorrectly(value){
+  if(this.signupForm.get(`${value.getAttribute('formControlName')}`).invalid && 
+  this.signupForm.get(`${value.getAttribute('formControlName')}`).touched && 
+  this.signupForm.get(`${value.getAttribute('formControlName')}`).value !== null){
+return true;
+  }
+
+}
+enterValue(value){
+  if(`${value.getAttribute('formControlName')}`==="checkbox"){
+    if(this.submitted && this.signupForm.get(`${value.getAttribute('formControlName')}`).value===null)
+    {return true;}
+  }
+  if(this.signupForm.get(`${value.getAttribute('formControlName')}`).touched
+   && this.signupForm.get(`${value.getAttribute('formControlName')}`).value===null ||this.submitted && this.signupForm.get(`${value.getAttribute('formControlName')}`).value===null
+   ){
+    return true;
+  }
+
   
-  }
-  isFilled(): boolean {
-    if (this.signupForm.valid && this.signupForm.touched === true) return false;
-    else return true;
-  }
+}
   gotoSignUp(){
     this.router.navigate(["/register"]);
   }

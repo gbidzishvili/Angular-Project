@@ -1,98 +1,116 @@
-.background{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.background {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title-cont {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.city {
+  color: #fff;
+  font-family: "roboto";
+  font-size: 30px;
+}
+.day-1 {
+  color: #fff;
+  font-family: "roboto";
+}
+.cont-1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.iner-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.temp {
+  font-size: 64px;
+  color: #fff;
+}
+.time {
+  font-family: "roboto";
+  color: #fff;
+}
+.label {
+  display: flex;
+  justify-content: center;
+  font-family: "roboto";
+  font-size: 16px;
+  color: #fff;
+}
+.day {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #fff;
+  font-family: "roboto";
 }
 
-.city{
-    color: #fff;
-    font-family: "roboto";
+.sunny {
+  background-image: url("../../images/sun.png");
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
-.day-1{
-    color: #fff;
-    font-family: "roboto";
+.night {
+  background-image: url("../../images/full_moon.png");
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
-.cont-1{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.cloudy-night {
+  background-image: url("../../images/cloudy-moon.webp");
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
-.iner-cont{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cloudy {
+  background-image: url("../../images/cloudy.png");
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
-.temp{
-    font-size: 64px;
-    color: #fff;
-}
-.time{
-    font-family: "roboto";
-    color: #fff;
-}
-.label{
-    display: flex;
-    justify-content: center;
-    font-family: "roboto";
-    font-size: 16px;
-    color: #fff;
-}
-.day{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: #fff;
-    font-family: "roboto";
+.cloudy2 {
+  background-image: url("../../images/cloudy2.webp");
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
-
-.sunny{
-    background-image: url("../../images/sun.png");
-    width: 100px;
-    height: 100px;
-    background-size: 100%;
-    background-repeat: no-repeat;
+.rainy {
+  background-image: url("../../images/rain.png");
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
-.cloudy{
-    background-image: url("../../images/cloudy.png");
-    width: 100px;
-    height: 100px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-.cloudy2{
-    background-image: url("../../images/cloudy2.webp");
-    width: 100px;
-    height: 100px;
-    background-size: 100%;
-    background-repeat: no-repeat;
+.snowy {
+  background-image: url("../../images/snow.png");
+  width: 100px;
+  height: 100px;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
-.rainy{
-    background-image: url("../../images/rain.png");
-    width: 100px;
-    height: 100px;
-    background-size: 100%;
-    background-repeat: no-repeat;
+.small {
+  width: 25px;
+  height: 25px;
 }
-.snowy{
-    background-image: url("../../images/snow.png");
-    width: 100px;
-    height: 100px;
-    background-size: 100%;
-    background-repeat: no-repeat;
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-
-.small{
-    width: 25px;
-    height: 25px;
-}
-.flex{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.width{
-    max-width: 100px;
-    min-width: 70px;
+.width {
+  max-width: 100px;
+  min-width: 70px;
 }

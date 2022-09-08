@@ -14,8 +14,10 @@ export class CandeactivateGuard implements CanDeactivate<CanCompDeactivate> {
   canDeactivate(component: CanCompDeactivate, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     console.log(component,currentRoute,currentState,nextState);
     if(nextState.url === "/login"){
-
-      return confirm("do you want to leave this page?")
+      if(confirm("do you want to leave this page?")===true){
+        localStorage.setItem("registered","false")
+        return true;
+      }else return false
     }
     else{
       return true;

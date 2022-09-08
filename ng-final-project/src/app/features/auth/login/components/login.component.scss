@@ -1,5 +1,4 @@
-
-form{
+form {
   display: flex;
   margin: 80px auto;
   width: 350px;
@@ -10,7 +9,7 @@ form{
   border-radius: 10px;
   box-shadow: 0px 0px 3px #0000003d;
 }
-.login{
+.login {
   padding: 5px 5px;
   background-color: #e3efef;
   display: flex;
@@ -23,12 +22,12 @@ form{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
 }
-.input-container{
+.input-container {
   display: flex;
   flex-direction: column;
 }
+
 label {
   display: flex;
   justify-content: flex-start;
@@ -41,7 +40,9 @@ label.check {
   display: flex;
   gap: 5px;
 }
-
+input {
+  padding: 3px 6px;
+}
 .underline {
   text-decoration: none;
 }
@@ -58,7 +59,12 @@ input.ng-invalid.ng-touched {
   // border: none;
 }
 .regbtns {
-  
   gap: 5px;
   font-weight: bold;
+}
+.redborder {
+  border: 1px solid red;
+}
+.error {
+  color: red;
 }

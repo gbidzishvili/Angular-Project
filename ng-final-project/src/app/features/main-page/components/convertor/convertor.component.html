@@ -5,24 +5,28 @@
       
         <div class="flex">
             <div class="small-cont">
-                <label >Kilometers</label>
+                <label *ngIf="!reversedDistance" >Kilometers</label>
+                <label *ngIf="reversedDistance">Miles</label>
             <input formControlName = "kilometers" type="text">
             </div>
 
-            <mat-icon > change_circle </mat-icon>
+            <mat-icon (click)="reverseDistance()" > change_circle </mat-icon>
             <div class="small-cont">
-                <label >Miles</label>
+                <label *ngIf="!reversedDistance">Miles </label>
+                <label *ngIf="reversedDistance">Kilometers </label>
             <input formControlName = "miles" type="text">
             </div>
         </div>
         <div class="flex">
             <div class="small-cont">
-                <label >C°</label>
+                <label *ngIf="!reversedtemp">C°</label>
+                <label *ngIf="reversedtemp">F°</label>
                 <input formControlName = "celsius" type="text">
             </div>
-            <mat-icon > change_circle </mat-icon>
+            <mat-icon (click)="reversetemp()"> change_circle </mat-icon>
            <div class="small-cont">
-                <label >F°</label>
+                <label *ngIf="!reversedtemp">F°</label>
+                <label *ngIf="reversedtemp">C°</label>
                 <input formControlName = "fahrenheit" type="text">
            </div>
        

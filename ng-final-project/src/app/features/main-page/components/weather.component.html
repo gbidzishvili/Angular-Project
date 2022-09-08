@@ -12,16 +12,19 @@
         <app-navigation></app-navigation>
 <div class="main-cont">
    
-        <app-side-bar [currtemp]="inpCurTemp"
+        <app-side-bar
+         [currtemp]="temp"
          [tumTemp]="tumTempAvg" 
          [tumsky]="tumsky"
-         [dayAfttumtem]="dayAfttumtemAvg" 
+         [dayAfttumtemp]="dayAfttumtempAvg" 
          [dayAfttumsky]="dayAfttumsky"
-
          [twoDaysAftTumTemp]="twoDaysAftTumTempAvg" 
+         [twoDaysAftTumsky]="twoDaysAftTumsky" 
          [threeDaysAftTumTemp]="threeDaysAftTumTempAvg" 
-         [city]="city" [sky]="sky"></app-side-bar>
-        
+         [threeDaysAftTumsky]="threeDaysAftTumsky" 
+         [city]="city | titlecase"
+         [sky]="sky"
+          ></app-side-bar>
              <div class="card-container">
                    <div class="search-bar">
                          <form [formGroup]="Form" (ngSubmit)="onSubmit(Form.value)">
@@ -35,7 +38,7 @@
                        </form>
                        <div class="error" *ngIf="!correctCountry">Choose Valid City</div>
                    </div>
-                   <!-- <div class="inner-cont"> -->
+                   
                        <div class="card">
                     
                     <div class="backgroundImage flex-cont" *ngIf="sunny">
@@ -43,7 +46,7 @@
                         <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
                     </div>
                     <div class="backgroundImage2 flex-cont" *ngIf="!sunny">
-                        <div class="city">{{city}}</div>
+                        <div class="city">{{city| titlecase}}</div>
                         <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
                     </div>
                     <span class="info">More Information</span>
@@ -59,8 +62,6 @@
                     </div>
                 </div>
                 <button class="quiz" routerLink="/quiz">Play Quiz</button>
-                
-                <!-- </div> -->
             </div>
             <div class="cont-3">
             <app-currency-exchanger></app-currency-exchanger>

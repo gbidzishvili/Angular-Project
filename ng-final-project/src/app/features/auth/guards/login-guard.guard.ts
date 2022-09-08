@@ -26,14 +26,14 @@ export class LoginGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      console.log('/////****');
+  
       
-      console.log(localStorage.getItem("registered"));
+     
       
     if (localStorage.getItem("registered")==="true") {
       return true;
     } else {
-      console.log('sdfsfjakdfadfasdfasdfasdfad');
+      
       
       this.router.navigate(['/']);
     }

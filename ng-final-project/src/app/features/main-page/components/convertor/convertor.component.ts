@@ -53,9 +53,9 @@ export class ConvertorComponent implements OnInit {
   }
   kilosIntoMiles(kilo){
     this.kilometers= kilo;
-    const mile=kilo*0.621;
-    const milesprecision = mile.toPrecision(4);
-    const parsed = parseFloat(milesprecision)
+    const mile:number=kilo*0.621;
+    const milesprecision:string = mile.toPrecision(4);
+    const parsed:number = parseFloat(milesprecision)
     this.miles = parsed;
     this.converterForm.setValue(
       {
@@ -71,13 +71,10 @@ export class ConvertorComponent implements OnInit {
   milesIntoKilo(miles){
     
     this.miles = miles;
-    const kilo = miles*1.609344;
-    const kilosprecision = kilo.toPrecision(4);
-    const parsed = parseFloat(kilosprecision);
+    const kilo:number = miles*1.609344;
+    const kilosprecision:string = kilo.toPrecision(4);
+    const parsed:number = parseFloat(kilosprecision);
     this.kilometers = parsed;
-    console.log('distance');
-    console.log(this.kilometers);
-    console.log(this.miles);
     this.converterForm.setValue(
       {
         kilometers: this.kilometers,
@@ -93,9 +90,9 @@ export class ConvertorComponent implements OnInit {
     if(!this.reversedDistance){
       this.reversedDistance=true;
     this.miles = this.kilometers;
-    const kilo = this.miles*1.609344;
-    const kilosprecision = kilo.toPrecision(4);
-    const parsed = parseFloat(kilosprecision);
+    const kilo:number = this.miles*1.609344;
+    const kilosprecision:string = kilo.toPrecision(4);
+    const parsed:number = parseFloat(kilosprecision);
     this.kilometers =parsed;
     this.converterForm.setValue(
       {
@@ -110,9 +107,9 @@ export class ConvertorComponent implements OnInit {
       this.reversedDistance=false;
       
       this.kilometers = this.miles;
-      const mile = this.kilometers*0.621;
-      const milesprecision = mile.toPrecision(4);
-      const parsed = parseFloat(milesprecision);
+      const mile:number = this.kilometers*0.621;
+      const milesprecision:string = mile.toPrecision(4);
+      const parsed:number = parseFloat(milesprecision);
       this.miles=parsed;
       console.log(this.miles);
       
@@ -129,9 +126,9 @@ export class ConvertorComponent implements OnInit {
   }
   celsiusIntoFahrenheit(celsius){
     this.celsius = celsius
-    const intofahrenheit = (celsius*9/5)+32;
-    const fahrenheitPrecision = intofahrenheit.toPrecision(4);
-    const parsed = parseFloat(fahrenheitPrecision);
+    const intofahrenheit:number = (celsius*9/5)+32;
+    const fahrenheitPrecision:string = intofahrenheit.toPrecision(4);
+    const parsed:number = parseFloat(fahrenheitPrecision);
     this.fahrenheit = parsed;
     this.converterForm.setValue(
       {
@@ -145,9 +142,9 @@ export class ConvertorComponent implements OnInit {
   }
   fahrenheitIntoCelsius(fahrenheit){
     this.fahrenheit = fahrenheit;
-    const intoCelsius =(fahrenheit-32)*5/9;
-    const CelsiusPrecision =intoCelsius.toPrecision(4) ;
-    const parsed = parseFloat(CelsiusPrecision);
+    const intoCelsius:number =(fahrenheit-32)*5/9;
+    const CelsiusPrecision:string =intoCelsius.toPrecision(4) ;
+    const parsed:number = parseFloat(CelsiusPrecision);
     this.celsius = parsed;
     this.converterForm.setValue(
     {
@@ -163,9 +160,9 @@ export class ConvertorComponent implements OnInit {
     if(!this.reversedtemp){
     this.reversedtemp=true;
     this.fahrenheit = this.celsius;
-    const celsius = (this.fahrenheit-32)*5/9;
-    const celsiusprecision = celsius.toPrecision(4);
-    const parsed = parseFloat(celsiusprecision);
+    const celsius:number = (this.fahrenheit-32)*5/9;
+    const celsiusprecision:string = celsius.toPrecision(4);
+    const parsed:number = parseFloat(celsiusprecision);
     this.celsius =parsed;
     this.converterForm.setValue(
       {
@@ -179,14 +176,10 @@ export class ConvertorComponent implements OnInit {
     }else if(this.reversedtemp){
       this.reversedtemp=false;
       this.celsius = this.fahrenheit;
-      console.log('celsius');
-      console.log(this.celsius);
-      
-      const fahrenheit = (this.celsius*9/5)+32;
-      const fahrenheitprecision = fahrenheit.toPrecision(4);
-      const parsed = parseFloat(fahrenheitprecision);
+      const fahrenheit:number = (this.celsius*9/5)+32;
+      const fahrenheitprecision:string = fahrenheit.toPrecision(4);
+      const parsed:number = parseFloat(fahrenheitprecision);
       this.fahrenheit=parsed;
-      console.log(this.miles);
       
       this.converterForm.setValue(
         {

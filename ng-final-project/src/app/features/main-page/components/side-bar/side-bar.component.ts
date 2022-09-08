@@ -58,10 +58,10 @@ export class SideBarComponent implements OnInit,OnChanges {
     if(this.sky==='Clouds')this.cloudy=true;
     if(this.sky==='Rain')this.rainy=true;
     if(this.sky==='Snow')this.snowy=true;
-    const tomorrow = new Date(Date.now() + (3600 * 1000 * 24));
-    const dayafttom = new Date(Date.now() + (3600 * 1000 * 24)*2);
-    const twodaysafttom = new Date(Date.now() + (3600 * 1000 * 24)*3);
-    const threedaysafttom = new Date(Date.now() + (3600 * 1000 * 24)*4);
+    const tomorrow:Date = new Date(Date.now() + (3600 * 1000 * 24));
+    const dayafttom:Date = new Date(Date.now() + (3600 * 1000 * 24)*2);
+    const twodaysafttom:Date = new Date(Date.now() + (3600 * 1000 * 24)*3);
+    const threedaysafttom:Date = new Date(Date.now() + (3600 * 1000 * 24)*4);
     this.today = new Date().toLocaleDateString('en-us', {  weekday: 'long',  day: 'numeric',month: 'long'});
     this.day_2 =  tomorrow.toLocaleDateString('en-us', { weekday: 'long' });
     this.day_3 =  dayafttom.toLocaleDateString('en-us', { weekday: 'long' });

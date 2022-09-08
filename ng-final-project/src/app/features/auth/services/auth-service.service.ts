@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { user } from '../interfaces/interfaces';
-import { GetUsersDataService } from 'src/app/shared/services/get-users-data.service';
+
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class AuthServiceService {
   public email: string;
   public password: string;
   public salary: number;
-  constructor(private http: HttpClient, private router: Router,private getUsersDataService:GetUsersDataService) {}
+  constructor(private http: HttpClient, private router: Router) {}
   getEmail(email: string) {
     if (typeof email !== 'string') return false;
     this.email = email;
@@ -48,7 +48,12 @@ export class AuthServiceService {
           }
         })
       )
-      .subscribe((v) => {});
+      .subscribe((v) => {},
+      (err)=>{
+        console.log(err.message);
+        
+      }
+      );
   }
   isAuthenticatedcheck() {
     if (this.isAuthenticated === true) return true;

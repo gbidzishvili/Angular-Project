@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GetUsersDataService } from 'src/app/shared/services/get-users-data.service';
+
 
 @Component({
   selector: 'app-navigation',
@@ -9,7 +9,7 @@ import { GetUsersDataService } from 'src/app/shared/services/get-users-data.serv
 })
 export class NavigationComponent implements OnInit,OnChanges {
   public nickname:string;
-  constructor(private router:Router,private getUsersDataService:GetUsersDataService) { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     this.nickname = localStorage.getItem("nickname")

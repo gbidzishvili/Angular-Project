@@ -76,7 +76,7 @@ export class WeatherComponent implements OnInit {
   ngOnInit(): void {
     this.http.get(`${this.baseUrl}/${this.getforecast}`,
     { headers: new HttpHeaders({
-      'X-RapidAPI-Key': this.key11,
+      'X-RapidAPI-Key': this.key9,
       'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
     }
       ),
@@ -234,42 +234,11 @@ export class WeatherComponent implements OnInit {
   clearText(){
     this.Form.setValue({"search":""});
   }
-  onSubmit(value){
-    
-this.temp=0;
-this.tumTempAvg=0;
-this.tumTempSum=0;
-this.tumsky=null;
-this.dayAfttumtempAvg=0;
-this.dayAfttumtempSum=0;
-this.dayAfttumsky=null;
-this.twoDaysAftTumTempAvg=0;
-this.twoDaysAftTumTempSum=0;
-this.twoDaysAftTumsky=null;
-this.threeDaysAftTumTempAvg=0;
-this.threeDaysAftTumTempSum=0;
-this.threeDaysAftTumsky=null;
-this.city=null;
-this.sky=null;
-this.tumSunny = 0;
-this.dayAfttumSunny=0
-this.twoDaysAfttumSunny=0;
-this.threeDaysAfttumSunny=0;
-this.tumRainy = 0;
-this.dayAfttumRainy=0;
-this.twoDaysAfttumRainy=0;
-this.threeDaysAfttumRainy=0;
-this.tumCloudy=0;
-this.dayAfttumCloudy=0;
-this.twoDaysAfttumCloudy=0;
-this.threeDaysAfttumCloudy=0;
-this.tumSnowy = 0;
-this.dayAfttumSnowy=0;
-this.twoDaysAfttumSnowy=0;
-this.threeDaysAfttumSnowy=0;
+  onSubmit(value){ 
+    this.nulifyData();
     this.http.get(`${this.baseUrl}/${this.getforecast}`,
     { headers: new HttpHeaders({
-      'X-RapidAPI-Key': this.key11,
+      'X-RapidAPI-Key': this.key9,
       'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
     }
       ),
@@ -292,13 +261,9 @@ this.threeDaysAfttumSnowy=0;
     this.humidity = Math.round(v["list"][0].main.humidity.toString());
       this.correctCountry = true;
       this.city = value.search;
-      // this.inpCurTemp = this.temp;
-      
-      
       this.sky = v["list"][0].weather[0].main;
       localStorage.setItem("sky",this.sky)
       localStorage.setItem("weather", JSON.stringify(v));
-      
     },
     (err=>{
       this.correctCountry = false;
@@ -306,16 +271,10 @@ this.threeDaysAfttumSnowy=0;
     )
     ),
     this.sky = localStorage.getItem("sky");
-    console.log('----');
-    
-    console.log(this.sky);
     this.Form = new FormGroup({
     search : new FormControl("search city")})
-
     this.item = localStorage.getItem("weather");
     this.itemParsed = JSON.parse(this.item)
-    console.log('item parsed');
-    console.log(this.itemParsed);
     this.todaysDate = this.itemParsed["list"][0].dt_txt.slice(8,10);
     // Get weather data for tomorrow,dayAftertomorow,twoDaysAftTum,threeDaysAftTum.
     for(let i = 0; i < 8; i++){
@@ -401,5 +360,38 @@ this.threeDaysAfttumSnowy=0;
   }
   canDeactivate():Observable<boolean > | Promise<boolean > | boolean  {
     return confirm("Do you want to leave this page?");
+  }
+  nulifyData(){
+    this.temp=0;
+this.tumTempAvg=0;
+this.tumTempSum=0;
+this.tumsky=null;
+this.dayAfttumtempAvg=0;
+this.dayAfttumtempSum=0;
+this.dayAfttumsky=null;
+this.twoDaysAftTumTempAvg=0;
+this.twoDaysAftTumTempSum=0;
+this.twoDaysAftTumsky=null;
+this.threeDaysAftTumTempAvg=0;
+this.threeDaysAftTumTempSum=0;
+this.threeDaysAftTumsky=null;
+this.city=null;
+this.sky=null;
+this.tumSunny = 0;
+this.dayAfttumSunny=0
+this.twoDaysAfttumSunny=0;
+this.threeDaysAfttumSunny=0;
+this.tumRainy = 0;
+this.dayAfttumRainy=0;
+this.twoDaysAfttumRainy=0;
+this.threeDaysAfttumRainy=0;
+this.tumCloudy=0;
+this.dayAfttumCloudy=0;
+this.twoDaysAfttumCloudy=0;
+this.threeDaysAfttumCloudy=0;
+this.tumSnowy = 0;
+this.dayAfttumSnowy=0;
+this.twoDaysAfttumSnowy=0;
+this.threeDaysAfttumSnowy=0;
   }
 }

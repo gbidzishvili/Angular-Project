@@ -70,8 +70,6 @@ enterValue(value){
    ){
     return true;
   }
-
-  
 }
   gotoSignUp(){
     this.router.navigate(["/register"]);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetUsersDataService } from 'src/app/shared/services/get-users-data.service';
+
 
 @Component({
   selector: 'app-quiz-top-bar',
@@ -7,8 +7,8 @@ import { GetUsersDataService } from 'src/app/shared/services/get-users-data.serv
   styleUrls: ['./quiz-top-bar.component.scss']
 })
 export class QuizTopBarComponent implements OnInit {
-  nickname
-  constructor(private getUsersDataService:GetUsersDataService) { }
+  nickname:string;
+  constructor() { }
 
   ngOnInit(): void {
     // this.nickname = this.getUsersDataService.nickname;

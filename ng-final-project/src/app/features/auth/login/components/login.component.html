@@ -5,31 +5,21 @@
     <input
     #itemName [ngClass]="checkIfValidvalue(itemName)"
       type="text"
-      class="form-control"
-      id="username"
       formControlName="email"
-      (input)="auth()"
-      [value]="email"
     />
     <div class="error" *ngIf='checkIfwrittencorrectly(itemName)'>Use letters,numbers or symbols</div>
     <div *ngIf="enterValue(itemName)" class="error">Enter Email</div>
   </div>
- 
   <div class="input-container">
     <label> Password:</label>
     <input #itemName1 [ngClass]="checkIfValidvalue(itemName1)"
       type="text"
       formControlName="password"
-      (input)="auth()"
-      [value]="password"
     />
     <div class="error" *ngIf='checkIfwrittencorrectly(itemName1)'>Use letters,numbers or symbols</div>
     <div *ngIf="enterValue(itemName1)" class="error">Enter Password</div>
-
   </div>
-  
-  <div class="div-cont regbtns col-md-12">
-    <!-- <button class="btn" type="submit" [disabled]="isFilled()">LogIn</button> -->
+  <div class="div-cont regbtns">
     <button class="btn register" type="submit">Login</button>
     <span> |</span>
     <button class="btn register" type="button" (click)="gotoSignUp()">

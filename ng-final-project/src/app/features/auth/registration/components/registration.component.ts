@@ -56,13 +56,17 @@ export class RegistrationComponent implements OnInit {
     );
     this.http.get('http://localhost:3000/users').subscribe((val) => {
       for (let x in val) {
-        console.log(val[x]);
+        
         this.arr.push(val[x]);
       }
-    });
-    console.log('first');
+      
+    },(err)=>{
+      console.log(err.message);
+      
+    })
+    ;
+   
     
-    console.log(this.signupForm.value.checkbox);
     
   }
   onSubmit(postData: user) {
@@ -91,9 +95,11 @@ export class RegistrationComponent implements OnInit {
     this.http
       .post('http://localhost:3000/users', postData)
       .subscribe((response) => {
-        console.log(response);
+        
+      },(err)=>{
+        console.log(err.message);
+        
       });
-   console.log(this.signupForm);
    
     return true;
   }}
@@ -102,9 +108,7 @@ export class RegistrationComponent implements OnInit {
     this.router.navigate(['/']);
   }
   checkIfValidvalue(value){
-    console.log('/*/*');
     
-    console.log(this.signupForm.get("nickname").touched);
     
     if(this.submitted){
       if(this.signupForm.get(`${value.getAttribute('formControlName')}`).invalid && this.signupForm.get(`${value.getAttribute('formControlName')}`).touched){

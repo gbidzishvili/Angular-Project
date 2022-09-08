@@ -222,6 +222,9 @@ export class QuizComponent implements OnInit {
     this.http.get("https://the-trivia-api.com/api/questions?categories=geography,science&limit=10")
     .subscribe(v=>{
       localStorage.setItem("question2",JSON.stringify(v));
+    }),
+    (err=>{
+      console.log(err.message)
     })
     this.item = localStorage.getItem("question2");
     this.itemParsed = JSON.parse(this.item);

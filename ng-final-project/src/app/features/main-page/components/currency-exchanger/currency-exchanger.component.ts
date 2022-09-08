@@ -22,9 +22,6 @@ export class CurrencyExchangerComponent implements OnInit {
   public additinalAmount:number;
   public additinalCur:string;
   constructor(private http: HttpClient) {}
-  // round(number){
-
-  // }
   ngOnInit(): void {
     this.fetchPost()
     .subscribe(
@@ -37,8 +34,6 @@ export class CurrencyExchangerComponent implements OnInit {
             }
           }
           this.Am2 = this.rate * this.Am1;
-          // console.log(this.Am2);
-          
           this.currencyForm.setValue(
             {
               cur1: this.cur1,
@@ -196,8 +191,6 @@ export class CurrencyExchangerComponent implements OnInit {
         )
     }
   calculateValue(rate: number, val: number) {
-    // const celsiusprecision = celsius.toPrecision(4);
-    // const parsed = parseFloat(celsiusprecision);
     this.rate = rate;
     this.Am2 = rate * val;
     this.Am2 =  +this.Am2.toPrecision(4);

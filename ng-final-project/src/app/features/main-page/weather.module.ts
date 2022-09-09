@@ -9,7 +9,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CurrencyExchangerComponent } from './components/currency-exchanger/currency-exchanger.component';
 import { ConvertorComponent } from './components/convertor/convertor.component';
-
+import { loadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { ConvertorComponent } from './components/convertor/convertor.component';
     SideBarComponent,
     CurrencyExchangerComponent,
     ConvertorComponent,
-    
+     loadingSpinnerComponent,
   ],
   imports: [
     MatIconModule,

@@ -59,6 +59,7 @@ export class WeatherComponent implements OnInit {
   public threeDaysAfttumSnowy:number=0;
   public threeDaysAfttumCloudy:number=0;
   public index:number;
+  public loading=true;
   public baseUrl:string = "https://openweather43.p.rapidapi.com";
   public key1:string='19390cb9d4msh526432bedef9373p147597jsn06606fea107d';
   public key2:string='befb762131msh0fca0ea1158c417p1c829djsn8dca637f2a02';
@@ -80,14 +81,16 @@ export class WeatherComponent implements OnInit {
   public key18:string='fd6e7757bemshe857a404f250231p17bdb9jsn5f64abc15e08';
   public key19:string='e133d6efacmsha26c38947072113p134061jsnd0945a0730ad';
   public key20:string='405265b9c1mshd2741fe819a8a71p164fcfjsn8a506ef37a1a';
+  
   constructor(public http:HttpClient) { }
   
   ngOnInit(): void {
+    this.loading=true;
     this.Form = new FormGroup({
       search : new FormControl("search city")});
     this.http.get(`${this.baseUrl}/${this.getforecast}`,
     { headers: new HttpHeaders({
-      'X-RapidAPI-Key': this.key19,
+      'X-RapidAPI-Key': this.key20,
       'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
     }
       ),
@@ -104,6 +107,7 @@ export class WeatherComponent implements OnInit {
     },
     (err=>{
       this.correctCountry = false;
+      this.loading=false;
     }
     )
     )
@@ -138,12 +142,13 @@ export class WeatherComponent implements OnInit {
     this.Form.setValue({"search":""});
   }
   onSubmit(value){ 
+    this.loading=true;
     console.log('value');
     console.log(value);
     this.nulifyData();
     this.http.get(`${this.baseUrl}/${this.getforecast}`,
     { headers: new HttpHeaders({
-      'X-RapidAPI-Key': this.key19,
+      'X-RapidAPI-Key': this.key20,
       'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
     }
       ),
@@ -159,109 +164,11 @@ export class WeatherComponent implements OnInit {
     },
     (err=>{
       this.correctCountry = false;
+      this.loading=false;
     }
     )
     )
-    // this.item = localStorage.getItem("weather");
-    // v = JSON.parse(this.item);
-    // this.sky = v["list"][0].weather[0].main;
-    // this.sky = localStorage.getItem("sky");
-    // // this.Form = new FormGroup({
-    // // search : new FormControl("search city")})
-    // this.todaysDate = v["list"][0].dt_txt.slice(8,10);
-    // for(let i = 0; i < 8; i++){
-    //   if(v["list"][i].dt_txt.slice(8,10) !== this.todaysDate){
-    //     // index of new day
-    //     this.index = i;
-    //     break;
-    //   }
-    // }
-    // console.log('index');
-    // console.log(this.index);
-    
-    // for(let j = this.index;j<40; j++){
-    //   if(j<this.index+8){
-    //     this.tumTempSum+=this.itemParsed["list"][j].main.temp;
-    //     if(this.itemParsed["list"][j].weather[0].main === "Clear"){
-    //       this.tumSunny++;
-    //     }
-    //     else if(this.itemParsed["list"][j].weather[0].main === "Clouds"){
-    //       this.tumCloudy++;
-    //     }
-    //     else if(this.itemParsed["list"][j].weather[0].main === "Rain"){
-    //       this.tumRainy++;
-    //     }
-    //     else{
-    //       this.tumSnowy++;
-    //     }
-    //   }
-    //   else if(j>=this.index+8 && j<this.index+16 ){
-    //     // console.log('dayAfttumtempSum');
-    //     // console.log(this.dayAfttumtempSum);
-    //     this.dayAfttumtempSum+=this.itemParsed["list"][j].main.temp;
-    //     if(this.itemParsed["list"][j].weather[0].main === "Clear"){
-    //       this.dayAfttumSunny++;
-    //     }
-    //     else if(this.itemParsed["list"][j].weather[0].main === "Clouds"){
-    //       this.dayAfttumCloudy++;
-    //     }
-    //     else if(this.itemParsed["list"][j].weather[0].main === "Rain"){
-    //       this.dayAfttumRainy++;
-    //     }
-    //     else{
-    //       this.dayAfttumSnowy++;
-    //     }
-    //   }
-    //   else if(j>=this.index+16 && j<this.index+24 ){
-    //     // console.log('twoDaysAftTumTempSum');
-    //     // console.log(this.twoDaysAftTumTempSum)
-    //     this.twoDaysAftTumTempSum+=this.itemParsed["list"][j].main.temp;
-    //     if(this.itemParsed["list"][j].weather[0].main === "Clear"){
-    //       this.twoDaysAfttumSunny++;
-    //     }
-    //     else if(this.itemParsed["list"][j].weather[0].main === "Clouds"){
-    //       this.twoDaysAfttumCloudy++;
-    //     }
-    //     else if(this.itemParsed["list"][j].weather[0].main === "Rain"){
-    //       this.twoDaysAfttumRainy++;
-    //     }
-    //     else{
-    //       this.twoDaysAfttumSnowy++;
-    //     }
-    //   }
-    //   else if(j>=this.index+24 && j<this.index+32 ){
-    //     // console.log('threeDaysAftTumtempSum');
-    //     // console.log(this.threeDaysAftTumTempSum)
-    //     this.threeDaysAftTumTempSum+=this.itemParsed["list"][j].main.temp;
-    //     if(this.itemParsed["list"][j].weather[0].main === "Clear"){
-    //       this.threeDaysAfttumSunny++;
-    //     }
-    //     else if(this.itemParsed["list"][j].weather[0].main === "Clouds"){
-    //       this.threeDaysAfttumCloudy++;
-    //     }
-    //     else if(this.itemParsed["list"][j].weather[0].main === "Rain"){
-    //       this.threeDaysAfttumRainy++;
-    //     }
-    //     else{
-    //       this.threeDaysAfttumSnowy++;
-    //     }
-    //   }
-    //   else{
-    //     break;
-    //   }
-    // }
 
-    // this.tumsky=  this.skyDetec(this.tumsky,this.tumSnowy,this.tumRainy,this.tumSunny,this.tumCloudy);
-    // this.dayAfttumsky=  this.skyDetec(this.dayAfttumsky,this.dayAfttumSnowy,this.dayAfttumRainy,this.dayAfttumSunny,this.dayAfttumCloudy);
-    // this.twoDaysAftTumsky=  this.skyDetec(this.twoDaysAftTumsky,this.twoDaysAfttumSnowy,this.twoDaysAfttumRainy,this.twoDaysAfttumSunny,this.twoDaysAfttumCloudy);
-    // this.threeDaysAftTumsky=  this.skyDetec(this.threeDaysAftTumsky,this.threeDaysAfttumSnowy,this.threeDaysAfttumRainy,this.threeDaysAfttumSunny,this.threeDaysAfttumCloudy);
-    // this.tumTempAvg = Math.round(this.tumTempSum/8);
-
-    // this.dayAfttumtempAvg = Math.round(this.dayAfttumtempSum/8);
-
-    // this.twoDaysAftTumTempAvg = Math.round(this.twoDaysAftTumTempSum/8);
-
-    // this.threeDaysAftTumTempAvg =Math.round(this.threeDaysAftTumTempSum/8);
   }
   canDeactivate():Observable<boolean > | Promise<boolean > | boolean  {
     return confirm("Do you want to leave this page?");
@@ -374,6 +281,7 @@ export class WeatherComponent implements OnInit {
         else{
           break;
         }
+        this.loading=false;
       }
       this.tumsky=  this.skyDetec(this.tumsky,this.tumSnowy,this.tumRainy,this.tumSunny,this.tumCloudy);
       this.dayAfttumsky=  this.skyDetec(this.dayAfttumsky,this.dayAfttumSnowy,this.dayAfttumRainy,this.dayAfttumSunny,this.dayAfttumCloudy);

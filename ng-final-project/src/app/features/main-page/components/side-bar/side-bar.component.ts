@@ -18,6 +18,8 @@ export class SideBarComponent implements OnInit,OnChanges {
   @Input()threeDaysAftTumsky:string;
   @Input()city:string;
   @Input()sky:string;
+  @Input()isloading:boolean=false;
+
   public rxTime:Date = new Date();
   public tumSunny:boolean=false;
   public tumRainy:boolean=false;
@@ -48,7 +50,7 @@ export class SideBarComponent implements OnInit,OnChanges {
   public currHours:number;
   private daytime:boolean;
   private night:boolean;
-
+// private isloading:false;
   constructor() { }
  
   ngOnInit(): void {
@@ -81,6 +83,7 @@ export class SideBarComponent implements OnInit,OnChanges {
  )
  .subscribe(time => {
    this.rxTime = time;
+  
  });
 
 

@@ -105,7 +105,7 @@ export class QuizComponent implements OnInit {
     }
   }
   nextquestion(){
-    console.log(this.counter);
+    
     if(this.counter===10) {
       this.incorrectans++;
       this.progress+=10; 
@@ -152,11 +152,11 @@ export class QuizComponent implements OnInit {
     if(value === this.itemParsed[`${this.counter-1}`].correctAnswer){
       this.showAnswer(index);
       this.correctans++;
-      console.log("cor" + this.correctans);
+     
       
     }else if(value !== this.itemParsed[`${this.counter-1}`].correctAnswer){
       this.incorrectans++;
-      console.log("incor" + this.incorrectans);
+      
       this.ans1clicked=true;
       this.ans2clicked=true;
       this.ans3clicked=true;

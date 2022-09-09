@@ -13,7 +13,7 @@
   <div class="input-container">
     <label> Password:</label>
     <input #itemName1 [ngClass]="checkIfValidvalue(itemName1)"
-      type="text"
+      type="password"
       formControlName="password"
     />
     <div class="error" *ngIf='checkIfwrittencorrectly(itemName1)'>Use letters,numbers or symbols</div>

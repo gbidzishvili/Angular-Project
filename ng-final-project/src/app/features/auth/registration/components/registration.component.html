@@ -21,14 +21,14 @@
   
   <div class="input-container">
     <label> Password:</label>
-    <input #itemName2 [ngClass]="checkIfValidvalue(itemName2)" type="text" formControlName="password"  />
+    <input #itemName2 [ngClass]="checkIfValidvalue(itemName2)" type="password" formControlName="password"  />
     <div  *ngIf='checkIfwrittencorrectly(itemName2)' class="error">Use letters,numbers or symbols,minlength 8 </div>
     <div *ngIf="enterValue(itemName2)" class="error">Enter Password</div>
   </div>
   
   <div class="input-container">
     <label> Confirm Password:</label>
-    <input #itemName3 [ngClass]="checkIfValidvalue(itemName3)" type="text" formControlName="confirmPass"  />
+    <input #itemName3 [ngClass]="checkIfValidvalue(itemName3)" type="password" formControlName="confirmPass"  />
     <div  *ngIf='checkIfwrittencorrectly(itemName3)' class="error">Use letters,numbers or symbols,minlength 8 </div>
     <div *ngIf="enterValue(itemName3)" class="error">Confirm Password</div>
   </div>

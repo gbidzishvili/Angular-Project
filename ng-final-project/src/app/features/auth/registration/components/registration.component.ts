@@ -31,7 +31,6 @@ export class RegistrationComponent implements OnInit {
       {
         nickname: new FormControl(null, [
           Validators.required,
-          Validators.minLength(7),
           Validators.pattern('^[a-zA-Z0-9-!$%@#?^&*()_+|~=\\]`{}[:";\\\'<>?,./\\\\]*$'),
         ]),
         email: new FormControl(null, [Validators.required, Validators.email]),
@@ -68,6 +67,11 @@ export class RegistrationComponent implements OnInit {
    
     
     
+  }
+  routerlink(){
+    if(this.signupForm.valid){
+      this.router.navigate(["/login"]);
+    }
   }
   onSubmit(postData: user) {
     if(!this.submitted){

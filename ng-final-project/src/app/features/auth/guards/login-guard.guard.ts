@@ -33,8 +33,6 @@ export class LoginGuard implements CanActivate {
     if (localStorage.getItem("registered")==="true") {
       return true;
     } else {
-      
-      
       this.router.navigate(['/']);
     }
   }

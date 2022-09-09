@@ -71,43 +71,48 @@ export class WeatherComponent implements OnInit {
   public key9:string='c87a5568f7msh66a6b14a73f5e1dp15c0bajsn33b88df26ef0';
   public key10:string='a2de218ba2msh4885af07ea0fc98p147e0djsnbc0e579ef4e7';
   public key11:string='e33834454emsh10fce08cab4f5d8p1b3e5djsn9650058bec15';
+  public key12:string='ba9a9cac8amsh90dedb6eaf4a728p147bcdjsnc74581430142';
+  public key13:string='ff7e77eac1msh34de1fb494d6eb5p1b9069jsn4c94f11e05fd';
+  public key14:string='36eb294ba0mshca62b1022389512p17edd7jsne9a556220e35';
+  public key15:string='03a82e4b0fmsh4310dfcf8136efep1a9306jsn389f71b5664c';
+  public key16:string='66daa78204msh9cdd771907274d5p1ca8e6jsn5ac3e019e470';
+  public key17:string='670de1c4f1mshe613b2f8fd56572p1fd28ejsn11f1f008bdcc';
   constructor(public http:HttpClient) { }
   
   ngOnInit(): void {
+    this.Form = new FormGroup({
+      search : new FormControl("search city")});
     this.http.get(`${this.baseUrl}/${this.getforecast}`,
     { headers: new HttpHeaders({
-      'X-RapidAPI-Key': this.key9,
+      'X-RapidAPI-Key': this.key16,
       'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
     }
       ),
       params:new HttpParams()
       .set("appid","da0f9c8d90bde7e619c3ec47766a42f4")
-      .set('q',"minsk")
+      .set('q',"tbilisi")
       .set("appid","da0f9c8d90bde7e619c3ec47766a42f4")
       .set("cnt","40")
       .set("units","metric")
     }
     )
     .subscribe(v=>{
-      
       console.log(v);
       this.temp =Math.round(v["list"][0].main.temp.toString());
       if(this.temp<20)this.sunny = false; 
       else{this.sunny = true}
       this.Mintemp = Math.round(v["list"][0].main.temp_min.toString());
-    this.Maxtemp = Math.round(v["list"][0].main.temp_max.toString());
-    this.wind = v["list"][0].wind.speed;
-    this.humidity = Math.round(v["list"][0].main.humidity.toString());
+      this.Maxtemp = Math.round(v["list"][0].main.temp_max.toString());
+      this.wind = v["list"][0].wind.speed;
+      this.humidity = Math.round(v["list"][0].main.humidity.toString());
       this.correctCountry = true;
-      this.city = "tbilisi";
+      this.city = v["city"].name;
       // this.inpCurTemp = this.temp;
       console.log('/*****');
-      
       console.log(v["list"][0].weather[0].main);
-      
       this.sky = v["list"][0].weather[0].main;
       localStorage.setItem("sky",this.sky)
-      localStorage.setItem("weather", JSON.stringify(v));
+      localStorage.setItem("tbilisi", JSON.stringify(v));
       console.log(v);
     },
     (err=>{
@@ -116,10 +121,21 @@ export class WeatherComponent implements OnInit {
     )
     ),
     this.sky = localStorage.getItem("sky");
-    this.Form = new FormGroup({
-    search : new FormControl("search city")})
-    this.item = localStorage.getItem("weather");
-    this.itemParsed = JSON.parse(this.item)
+    
+    this.item = localStorage.getItem("tbilisi");
+    this.itemParsed = JSON.parse(this.item);
+
+    // this.temp =Math.round(this.itemParsed["list"][0].main.temp.toString());
+    // if(this.temp<20)this.sunny = false; 
+    // else{this.sunny = true}
+    // this.Mintemp = Math.round(this.itemParsed["list"][0].main.temp_min.toString());
+    // this.Maxtemp = Math.round(this.itemParsed["list"][0].main.temp_max.toString());
+    // this.wind = this.itemParsed["list"][0].wind.speed;
+    // this.humidity = Math.round(this.itemParsed["list"][0].main.humidity.toString());
+    // this.correctCountry = true;
+    // this.city = this.itemParsed["city"].name;
+    
+    
     this.todaysDate = this.itemParsed["list"][0].dt_txt.slice(8,10);
     // Get weather data for tomorrow,dayAftertomorow,twoDaysAftTum,threeDaysAftTum.
     for(let i = 0; i < 8; i++){
@@ -130,6 +146,8 @@ export class WeatherComponent implements OnInit {
     }
     for(let j = this.index;j<40; j++){
       if(j<this.index+8){
+        // console.log('tumTemp');
+        // console.log(this.tumTempSum);
         this.tumTempSum+=this.itemParsed["list"][j].main.temp;
         if(this.itemParsed["list"][j].weather[0].main === "Clear"){
           this.tumSunny++;
@@ -145,6 +163,8 @@ export class WeatherComponent implements OnInit {
         }
       }
       else if(j>=this.index+8 && j<this.index+16 ){
+        // console.log('dayAfttumtempSum');
+        // console.log(this.dayAfttumtempSum);
         this.dayAfttumtempSum+=this.itemParsed["list"][j].main.temp;
         if(this.itemParsed["list"][j].weather[0].main === "Clear"){
           this.dayAfttumSunny++;
@@ -160,6 +180,8 @@ export class WeatherComponent implements OnInit {
         }
       }
       else if(j>=this.index+16 && j<this.index+24 ){
+        //  console.log('twoDaysAftTumTempSum');
+        // console.log(this.twoDaysAftTumTempSum)
         this.twoDaysAftTumTempSum+=this.itemParsed["list"][j].main.temp;
         if(this.itemParsed["list"][j].weather[0].main === "Clear"){
           this.twoDaysAfttumSunny++;
@@ -175,6 +197,8 @@ export class WeatherComponent implements OnInit {
         }
       }
       else if(j>=this.index+24 && j<this.index+32 ){
+        // console.log('threeDaysAftTumtempSum');
+        // console.log(this.threeDaysAftTumTempSum)
         this.threeDaysAftTumTempSum+=this.itemParsed["list"][j].main.temp;
         if(this.itemParsed["list"][j].weather[0].main === "Clear"){
           this.threeDaysAfttumSunny++;
@@ -193,7 +217,6 @@ export class WeatherComponent implements OnInit {
         break;
       }
     }
-   
     this.tumsky=  this.skyDetec(this.tumsky,this.tumSnowy,this.tumRainy,this.tumSunny,this.tumCloudy);
     this.dayAfttumsky=  this.skyDetec(this.dayAfttumsky,this.dayAfttumSnowy,this.dayAfttumRainy,this.dayAfttumSunny,this.dayAfttumCloudy);
     this.twoDaysAftTumsky=  this.skyDetec(this.twoDaysAftTumsky,this.twoDaysAfttumSnowy,this.twoDaysAfttumRainy,this.twoDaysAfttumSunny,this.twoDaysAfttumCloudy);
@@ -202,11 +225,8 @@ export class WeatherComponent implements OnInit {
     this.dayAfttumtempAvg = Math.round(this.dayAfttumtempSum/8);
     this.twoDaysAftTumTempAvg = Math.round(this.twoDaysAftTumTempSum/8);
     this.threeDaysAftTumTempAvg =Math.round(this.threeDaysAftTumTempSum/8);
-  
-    
   }
-  skyDetec(day:string,snowy,rainy,sunny,cloudy){
-    
+  skyDetec(day:string,snowy:number,rainy:number,sunny:number,cloudy:number){
     if(
       snowy>=rainy && snowy>=sunny && snowy>=cloudy
     ){
@@ -235,10 +255,12 @@ export class WeatherComponent implements OnInit {
     this.Form.setValue({"search":""});
   }
   onSubmit(value){ 
+    console.log('value');
+    console.log(value);
     this.nulifyData();
     this.http.get(`${this.baseUrl}/${this.getforecast}`,
     { headers: new HttpHeaders({
-      'X-RapidAPI-Key': this.key9,
+      'X-RapidAPI-Key': this.key16,
       'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
     }
       ),
@@ -247,18 +269,19 @@ export class WeatherComponent implements OnInit {
       .set('q',value.search)
       .set("appid","da0f9c8d90bde7e619c3ec47766a42f4")
       .set("cnt","40")
-      .set("units","metric")
-    }
+      .set("units","metric")    }
     )
     .subscribe(v=>{
       console.log(v);
-      this.temp =Math.round(v["list"][0].main.temp.toString());
+      this.temp=Math.round(v["list"][0].main.temp.toString());
       if(this.temp<20)this.sunny = false; 
-      else{this.sunny = true}
+      else{
+        this.sunny = true;
+      }
       this.Mintemp = Math.round(v["list"][0].main.temp_min.toString());
-    this.Maxtemp = Math.round(v["list"][0].main.temp_max.toString());
-    this.wind = v["list"][0].wind.speed;
-    this.humidity = Math.round(v["list"][0].main.humidity.toString());
+      this.Maxtemp = Math.round(v["list"][0].main.temp_max.toString());
+      this.wind = v["list"][0].wind.speed;
+      this.humidity = Math.round(v["list"][0].main.humidity.toString());
       this.correctCountry = true;
       this.city = value.search;
       this.sky = v["list"][0].weather[0].main;
@@ -270,20 +293,23 @@ export class WeatherComponent implements OnInit {
     }
     )
     ),
-    this.sky = localStorage.getItem("sky");
-    this.Form = new FormGroup({
-    search : new FormControl("search city")})
     this.item = localStorage.getItem("weather");
-    this.itemParsed = JSON.parse(this.item)
+    this.itemParsed = JSON.parse(this.item);
+    this.sky = this.itemParsed["list"][0].weather[0].main;
+    this.sky = localStorage.getItem("sky");
+    // this.Form = new FormGroup({
+    // search : new FormControl("search city")})
     this.todaysDate = this.itemParsed["list"][0].dt_txt.slice(8,10);
-    // Get weather data for tomorrow,dayAftertomorow,twoDaysAftTum,threeDaysAftTum.
     for(let i = 0; i < 8; i++){
       if(this.itemParsed["list"][i].dt_txt.slice(8,10) !== this.todaysDate){
+        // index of new day
         this.index = i;
         break;
       }
     }
-
+    console.log('index');
+    console.log(this.index);
+    
     for(let j = this.index;j<40; j++){
       if(j<this.index+8){
         this.tumTempSum+=this.itemParsed["list"][j].main.temp;
@@ -301,6 +327,8 @@ export class WeatherComponent implements OnInit {
         }
       }
       else if(j>=this.index+8 && j<this.index+16 ){
+        // console.log('dayAfttumtempSum');
+        // console.log(this.dayAfttumtempSum);
         this.dayAfttumtempSum+=this.itemParsed["list"][j].main.temp;
         if(this.itemParsed["list"][j].weather[0].main === "Clear"){
           this.dayAfttumSunny++;
@@ -316,6 +344,8 @@ export class WeatherComponent implements OnInit {
         }
       }
       else if(j>=this.index+16 && j<this.index+24 ){
+        // console.log('twoDaysAftTumTempSum');
+        // console.log(this.twoDaysAftTumTempSum)
         this.twoDaysAftTumTempSum+=this.itemParsed["list"][j].main.temp;
         if(this.itemParsed["list"][j].weather[0].main === "Clear"){
           this.twoDaysAfttumSunny++;
@@ -331,6 +361,8 @@ export class WeatherComponent implements OnInit {
         }
       }
       else if(j>=this.index+24 && j<this.index+32 ){
+        // console.log('threeDaysAftTumtempSum');
+        // console.log(this.threeDaysAftTumTempSum)
         this.threeDaysAftTumTempSum+=this.itemParsed["list"][j].main.temp;
         if(this.itemParsed["list"][j].weather[0].main === "Clear"){
           this.threeDaysAfttumSunny++;
@@ -349,19 +381,31 @@ export class WeatherComponent implements OnInit {
         break;
       }
     }
+//     console.log('tumTemplast');
+//     console.log(this.tumTempSum);
+// console.log('dayAfttumtempSumlast');
+//     console.log(this.dayAfttumtempSum);
+// console.log('twoDaysAftTumTempSumlast');
+//     console.log(this.twoDaysAftTumTempSum)
+// console.log('threeDaysAftTumtempSumlast');
+//     console.log(this.threeDaysAftTumTempSum)
     this.tumsky=  this.skyDetec(this.tumsky,this.tumSnowy,this.tumRainy,this.tumSunny,this.tumCloudy);
     this.dayAfttumsky=  this.skyDetec(this.dayAfttumsky,this.dayAfttumSnowy,this.dayAfttumRainy,this.dayAfttumSunny,this.dayAfttumCloudy);
     this.twoDaysAftTumsky=  this.skyDetec(this.twoDaysAftTumsky,this.twoDaysAfttumSnowy,this.twoDaysAfttumRainy,this.twoDaysAfttumSunny,this.twoDaysAfttumCloudy);
     this.threeDaysAftTumsky=  this.skyDetec(this.threeDaysAftTumsky,this.threeDaysAfttumSnowy,this.threeDaysAfttumRainy,this.threeDaysAfttumSunny,this.threeDaysAfttumCloudy);
     this.tumTempAvg = Math.round(this.tumTempSum/8);
+
     this.dayAfttumtempAvg = Math.round(this.dayAfttumtempSum/8);
+
     this.twoDaysAftTumTempAvg = Math.round(this.twoDaysAftTumTempSum/8);
+
     this.threeDaysAftTumTempAvg =Math.round(this.threeDaysAftTumTempSum/8);
   }
   canDeactivate():Observable<boolean > | Promise<boolean > | boolean  {
     return confirm("Do you want to leave this page?");
   }
   nulifyData(){
+    this.todaysDate=null;
     this.temp=0;
 this.tumTempAvg=0;
 this.tumTempSum=0;

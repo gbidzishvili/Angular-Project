@@ -52,6 +52,12 @@ export class SideBarComponent implements OnInit,OnChanges {
   constructor() { }
  
   ngOnInit(): void {
+    // console.log('%%%%%%%1');
+    // console.log(this.currtemp)
+    // console.log(this.tumTemp)
+    // console.log(this.dayAfttumtemp)
+    // console.log(this.twoDaysAftTumTemp)
+    // console.log(this.threeDaysAftTumTemp)
     this.currHours = new Date().getHours();
     this.getTodaysState();
     if(this.sky ==='Clear') this.sunny=true;
@@ -193,6 +199,12 @@ if(this.threeDaysAftTumsky === 'sunny'){
     }
   }
   ngOnChanges(){
+    // console.log('%%%%%%%2');
+    // console.log(this.currtemp)
+    // console.log(this.tumTemp)
+    // console.log(this.dayAfttumtemp)
+    // console.log(this.twoDaysAftTumTemp)
+    // console.log(this.threeDaysAftTumTemp)
 this.tumSunny=false;
    this.tumRainy=false;
    this.tumCloudy=false;

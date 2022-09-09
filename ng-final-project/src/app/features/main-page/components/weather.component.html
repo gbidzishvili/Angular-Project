@@ -17,7 +17,7 @@
             [city]="city | titlecase"
             [sky]="sky"
             ></app-side-bar>
-             <div class="card-container">
+             <div class="card-container" >
                    <div class="search-bar">
                          <form [formGroup]="Form" (ngSubmit)="onSubmit(Form.value)">
                             <input
@@ -34,7 +34,8 @@
                     <div class="card">
                        <div class="backgroundImage flex-cont" *ngIf="sunny">
                             <div class="city ">{{city | titlecase}}</div>
-                            <div class="tempcont"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
+                            <div class="tempcont"*ngIf="!loading"><div class="temp">{{temp}}°</div><span class="c">C</span></div>
+                            <div *ngIf="loading"><app-loading-spinner></app-loading-spinner></div>
                        </div>
                        <div class="backgroundImage2 flex-cont" *ngIf="!sunny">
                             <div class="city">{{city| titlecase}}</div>

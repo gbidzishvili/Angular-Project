@@ -204,17 +204,11 @@ export class QuizComponent implements OnInit {
         this.ans4checked=true;
     }
   }
-  estimateAnswer(answer,answericlicked,answerichecked,answericleared){
-    
+  estimateAnswer(answer,answericlicked){ 
     if(answer===this.itemParsed[`${this.counter-1}`].correctAnswer && answericlicked===true){
-      
-      console.log(this.ans1checked,this.ans2checked,this.ans3checked,this.ans4checked);
       return "correct";
     }
     else if(answer!==this.itemParsed[`${this.counter-1}`].correctAnswer && answericlicked===true){
-     
-     
-      
       return "incorrect";
     }
   }

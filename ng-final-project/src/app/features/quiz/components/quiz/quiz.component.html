@@ -28,10 +28,10 @@
                     <hr>
                 </div>
                 <div class="answers-cont">
-                    <div [ngClass]="estimateAnswer(answer_1,ans1clicked,ans1checked,ans1cleared)" class="answer-1 answer" (click)="checkAnswer(answer_1,1)" >{{answer_1}} <div><mat-icon class="check" *ngIf="ans1checked">check</mat-icon><mat-icon class="clear" *ngIf="ans1cleared">clear</mat-icon></div> </div>
-                    <div [ngClass]="estimateAnswer(answer_2,ans2clicked,ans2checked,ans2cleared)" class="answer-2 answer" (click)="checkAnswer(answer_2,2)">{{answer_2}} <div><mat-icon class="check" *ngIf="ans2checked">check</mat-icon><mat-icon class="clear" *ngIf="ans2cleared">clear</mat-icon></div></div>
-                    <div [ngClass]="estimateAnswer(answer_3,ans3clicked,ans3checked,ans3cleared)" class="answer-3 answer" (click)="checkAnswer(answer_3,3)">{{answer_3}} <div><mat-icon class="check" *ngIf="ans3checked">check</mat-icon><mat-icon class="clear" *ngIf="ans3cleared">clear</mat-icon></div></div>
-                    <div [ngClass]="estimateAnswer(answer_4,ans4clicked,ans4checked,ans4cleared)" class="answer-4 answer" (click)="checkAnswer(answer_4,4)">{{answer_4}} <div><mat-icon class="check" *ngIf="ans4checked">check</mat-icon><mat-icon class="clear" *ngIf="ans4cleared">clear</mat-icon></div></div>                
+                    <div [ngClass]="estimateAnswer(answer_1,ans1clicked)" class="answer-1 answer" (click)="checkAnswer(answer_1,1)" >{{answer_1}} <div><mat-icon class="check" *ngIf="ans1checked">check</mat-icon><mat-icon class="clear" *ngIf="ans1cleared">clear</mat-icon></div> </div>
+                    <div [ngClass]="estimateAnswer(answer_2,ans2clicked)" class="answer-2 answer" (click)="checkAnswer(answer_2,2)">{{answer_2}} <div><mat-icon class="check" *ngIf="ans2checked">check</mat-icon><mat-icon class="clear" *ngIf="ans2cleared">clear</mat-icon></div></div>
+                    <div [ngClass]="estimateAnswer(answer_3,ans3clicked)" class="answer-3 answer" (click)="checkAnswer(answer_3,3)">{{answer_3}} <div><mat-icon class="check" *ngIf="ans3checked">check</mat-icon><mat-icon class="clear" *ngIf="ans3cleared">clear</mat-icon></div></div>
+                    <div [ngClass]="estimateAnswer(answer_4,ans4clicked)" class="answer-4 answer" (click)="checkAnswer(answer_4,4)">{{answer_4}} <div><mat-icon class="check" *ngIf="ans4checked">check</mat-icon><mat-icon class="clear" *ngIf="ans4cleared">clear</mat-icon></div></div>                
                 </div>
                 <div class="result">result:</div>
                 <div class="correctans">correct {{correctans}}</div>

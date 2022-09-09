@@ -28,16 +28,6 @@ form {
         width: 180px;
         display: flex;
         gap: 5px;
-        .underline {
-          text-decoration: none;
-        }
-      }
-      .btn {
-        background-color: rgb(0, 153, 255);
-        padding: 5px 10px;
-        border: none;
-        border-radius: 5px;
-        color: #fff;
       }
     }
     .regbtns {
@@ -45,26 +35,109 @@ form {
       font-weight: bold;
     }
   }
-  label {
-    display: flex;
-    justify-content: flex-start;
-  }
-  input {
-    padding: 3px 6px;
-  }
-  input.ng-invalid.ng-touched {
-    border: 1px solid red;
-  }
-  .color-red {
-    color: red;
-  }
-  .error {
-    color: red;
-  }
-  .redborder {
-    border: 1px solid red;
-  }
-  .dispnone {
-    display: none;
-  }
 }
+label {
+  display: flex;
+  justify-content: flex-start;
+}
+.color-red {
+  color: red;
+}
+
+.underline {
+  text-decoration: none;
+}
+.btn {
+  background-color: rgb(0, 153, 255);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+input {
+  padding: 3px 6px;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+}
+.redborder {
+  border: 1px solid red;
+}
+.dispnone {
+  display: none;
+}
+//
+// form {
+//   display: flex;
+//   margin: 80px auto;
+//   width: 340px;
+
+//   flex-direction: column;
+//   gap: 15.5px;
+//   padding: 14px 20px;
+//   border-radius: 10px;
+//   box-shadow: 0px 0px 3px #0000003d;
+//   .register {
+//     padding: 5px 5px;
+//     background-color: #e3efef;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     font-size: 20px;
+//   }
+//   .input-container {
+//     display: flex;
+//     flex-direction: column;
+//     .div-cont {
+//       display: flex;
+//       justify-content: flex-start;
+//       align-items: center;
+//       gap: 5px;
+//       label.check {
+//         width: 180px;
+//         display: flex;
+//         gap: 5px;
+//         .underline {
+//           text-decoration: none;
+//         }
+//       }
+//       .btn {
+//         background-color: rgb(0, 153, 255);
+//         padding: 5px 10px;
+//         border: none;
+//         border-radius: 5px;
+//         color: #fff;
+//       }
+//     }
+//     .regbtns {
+//       gap: 5px;
+//       font-weight: bold;
+//     }
+//   }
+//   label {
+//     display: flex;
+//     justify-content: flex-start;
+//   }
+//   input {
+//     padding: 3px 6px;
+//   }
+//   input.ng-invalid.ng-touched {
+//     border: 1px solid red;
+//   }
+//   .color-red {
+//     color: red;
+//   }
+//   .error {
+//     color: red;
+//   }
+//   .redborder {
+//     border: 1px solid red;
+//   }
+//   .dispnone {
+//     display: none;
+//   }
+// }

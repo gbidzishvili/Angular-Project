@@ -16,7 +16,15 @@
       "phoneNumber": "+995545444522",
       "checkbox": true,
       "id": 2
+    },
+    {
+      "nickname": "g_bidzishvili",
+      "email": "g_bidzisvili@cu.edu.ge",
+      "password": "paroli12341234",
+      "confirmPass": "paroli12341234",
+      "phoneNumber": "+995 555444778",
+      "checkbox": true,
+      "id": 3
     }
-    
   ]
 }

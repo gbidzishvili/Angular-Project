@@ -81,6 +81,7 @@ export class WeatherComponent implements OnInit {
   public key18:string='fd6e7757bemshe857a404f250231p17bdb9jsn5f64abc15e08';
   public key19:string='e133d6efacmsha26c38947072113p134061jsnd0945a0730ad';
   public key20:string='405265b9c1mshd2741fe819a8a71p164fcfjsn8a506ef37a1a';
+  public key21:string='d29f688541mshf403147890d53aap1eb68djsnb71fca0d4ef9';
   
   constructor(public http:HttpClient) { }
   
@@ -90,7 +91,7 @@ export class WeatherComponent implements OnInit {
       search : new FormControl("search city")});
     this.http.get(`${this.baseUrl}/${this.getforecast}`,
     { headers: new HttpHeaders({
-      'X-RapidAPI-Key': this.key20,
+      'X-RapidAPI-Key': this.key21,
       'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
     }
       ),
@@ -148,7 +149,7 @@ export class WeatherComponent implements OnInit {
     this.nulifyData();
     this.http.get(`${this.baseUrl}/${this.getforecast}`,
     { headers: new HttpHeaders({
-      'X-RapidAPI-Key': this.key20,
+      'X-RapidAPI-Key': this.key21,
       'X-RapidAPI-Host': 'openweather43.p.rapidapi.com'
     }
       ),

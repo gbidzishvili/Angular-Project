@@ -9,7 +9,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule} from '@angular/material/icon'
-
+// import {GoogleMapsModule} from '@angular/google-maps'
+// import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [AppComponent,
      ],
@@ -21,6 +22,11 @@ import { MatIconModule} from '@angular/material/icon'
     CoreModule,
     BrowserAnimationsModule,
     MatIconModule ,
+
+
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyB7RZZ6W27WIbP_ZwmmMQkU8VlydA6yGIs'
+    // }),
    
   ],
   providers: [],

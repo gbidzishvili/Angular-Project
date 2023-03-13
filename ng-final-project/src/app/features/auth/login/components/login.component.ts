@@ -10,6 +10,7 @@ import { AuthServiceService } from '../../services/auth-service.service';
 })
 export class LoginComponent implements OnInit {
   public signupForm: FormGroup;
+  public text1 = "text1";
   public value: boolean = false;
   public check = false;
   public display = false;

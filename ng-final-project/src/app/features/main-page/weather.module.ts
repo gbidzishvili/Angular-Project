@@ -10,6 +10,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CurrencyExchangerComponent } from './components/currency-exchanger/currency-exchanger.component';
 import { ConvertorComponent } from './components/convertor/convertor.component';
 import { loadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-spinner.component';
+// import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { loadingSpinnerComponent } from 'src/app/shared/loading-spinner/loading-
     MatIconModule,
     CommonModule,
     SharedModule,
-    RouterModule.forChild([{ path: '', component: WeatherComponent }])
+    RouterModule.forChild([{ path: '', component: WeatherComponent }]),
+ 
   ],
+
 })
 export class WeatherModule { }

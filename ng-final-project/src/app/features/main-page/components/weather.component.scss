@@ -3,9 +3,22 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place pseudo-element behind content */
+  background-image: url(https://amindi.ge/static/img/bg/sun4.jpg);
+  background-size: cover;
+  filter: blur(10px); /* Apply a blur effect to the background */
+  opacity: 0.5; /* Set the opacity to 50% */
+}
 .background {
-  background-color: #3884c7;
+  // background: url(https://amindi.ge/static/img/bg/sun4.jpg);
+  // background-color: #3884c7;
   display: flex;
   gap: 15px;
   align-items: center;
@@ -197,16 +210,16 @@
   padding: 7px 14px;
   border-radius: 15px;
 }
-.map{
+.map {
   position: absolute;
-  top:0;
-  bottom:0;
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 100%;
 }
-agm-map{
+agm-map {
   height: 500px;
   width: 200px;
 }
